@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import ArrowIcon from "./ArrowIcon";
+import ArrowIcon from "../Icon/ArrowIcon";
 import { blueColor, redColor } from "../../../styles/color";
 
 const menuData = [
@@ -51,7 +51,7 @@ const Header = () => {
           <div className="profile_box" onClick={openMenuHandle}>
             <div className="profile_circle" />
             <span>sliverbeen</span>
-            <ArrowIcon />
+            <ArrowIcon openMenu={openMenu} />
           </div>
           <MoreMenuBox onClick={logoutHandle} openMenu={openMenu}>
             <li

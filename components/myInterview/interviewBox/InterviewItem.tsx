@@ -74,12 +74,12 @@ const NameBox = styled.div`
   span {
     margin-right: 5px;
   }
-  span:nth-child(1) {
+  span:nth-of-type(1) {
     font-size: 18px;
     font-weight: 700;
   }
 
-  span:nth-child(2) {
+  span:nth-of-type(2) {
     font-size: 14px;
     font-weight: 500;
     color: ${grayTextColor};

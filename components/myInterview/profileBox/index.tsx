@@ -47,12 +47,12 @@ const MyInfoBox = styled.div`
     align-items: center;
     gap: 15px;
 
-    > span:nth-child(1) {
+    > span:nth-of-type(1) {
       font-weight: 700;
       font-size: 28px;
     }
 
-    > span:nth-child(2) {
+    > span:nth-of-type(2) {
       position: relative;
       color: ${grayTextColor};
       font-weight: 500;

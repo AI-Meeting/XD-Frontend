@@ -144,7 +144,7 @@ const MoreMenuBox = styled.div<{ openMenu: boolean }>`
   box-shadow: 0px 5px 25px rgba(103, 103, 103, 0.25);
   border-radius: 10px;
 
-  li:nth-child(2) {
+  li:nth-of-type(2) {
     color: ${redColor};
     font-size: 14px;
   }

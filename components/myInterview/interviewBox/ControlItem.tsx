@@ -9,6 +9,7 @@ const ControlItem = () => {
 
   const openMenuHandle = () => {
     openMenu ? setOpenMenu(false) : setOpenMenu(true);
+    
   };
 
   const optionClickHandle = (option: string) => {

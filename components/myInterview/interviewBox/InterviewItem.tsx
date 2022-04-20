@@ -87,9 +87,12 @@ const NameBox = styled.div`
 `;
 
 const LevelInfo = styled.div`
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: end;
+  gap: 5px;
+  color: ${blueColor};
 
   button {
     width: 150px;

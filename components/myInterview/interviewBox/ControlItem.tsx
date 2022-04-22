@@ -1,11 +1,14 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { grayBorderColor, grayTextColor } from "../../../styles/color";
+import { useRecoilState } from "recoil";
+import { optionSelectName } from "../../../lib/module/atom/interview";
+import { grayBorderColor } from "../../../styles/color";
 import ArrowIcon from "../../common/Icon/ArrowIcon";
+import ControllOptionText from "./ControllOptionText";
 
 const ControlItem = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-  const [selectedName, setSelectedName] = useState<string>("나의 면접 후기");
+  const [selectedName, setSelectedName] = useRecoilState(optionSelectName);
 
   const openMenuHandle = () => {
     openMenu ? setOpenMenu(false) : setOpenMenu(true);
@@ -21,18 +24,21 @@ const ControlItem = () => {
       <span onClick={openMenuHandle}>{selectedName}</span>
       <ArrowIcon openMenu={openMenu} />
       <MoreMenuBox openMenu={openMenu}>
-        <span onClick={() => optionClickHandle("등록한 면접 후기")}>
-          등록한 면접 후기
-        </span>
-        <span onClick={() => optionClickHandle("진행한 모의 면접")}>
-          진행한 모의 면접
-        </span>
+        <ControllOptionText
+          optionName="등록한 면접 후기"
+          optionClickHandle={optionClickHandle}
+        />
+        <ControllOptionText
+          optionName="진행한 모의 면접"
+          optionClickHandle={optionClickHandle}
+        />
       </MoreMenuBox>
     </ControllItemContainer>
   );
 };
 
 const ControllItemContainer = styled.div`
+  position: relative;
   padding-bottom: 20px;
   box-sizing: border-box;
   border-bottom: 1px solid ${grayBorderColor};
@@ -50,10 +56,12 @@ const ControllItemContainer = styled.div`
 
 const MoreMenuBox = styled.div<{ openMenu: boolean }>`
   position: absolute;
-  top: 453px;
+  top: 30px;
   width: 142px;
   height: 100px;
-  display: ${({ openMenu }) => (openMenu ? "flex" : "none")};
+  display: flex;
+  opacity: ${({ openMenu }) => (openMenu ? 1 : 0)};
+  transition: all 0.2s;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -61,10 +69,6 @@ const MoreMenuBox = styled.div<{ openMenu: boolean }>`
   box-shadow: 0px 5px 25px rgba(103, 103, 103, 0.25);
   border-radius: 10px;
   gap: 15px;
-
-  span {
-    color: ${grayTextColor};
-  }
 `;
 
 export default ControlItem;

@@ -27,10 +27,11 @@ const InterviewItem = () => {
 };
 
 const ItemBox = styled.div`
+  margin: 20px 0;
   padding: 20px;
   width: 100%;
   height: 200px;
-  border: 1px solid #e3e4e3;
+  border: 1px solid #e3e4e35e;
   box-sizing: border-box;
   box-shadow: 0px 2px 5px rgba(204, 204, 204, 0.25);
   border-radius: 10px;

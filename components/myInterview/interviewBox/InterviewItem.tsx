@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { blueColor, grayTextColor, redColor } from "../../../styles/color";
+import { blueColor, grayTextColor } from "../../../styles/color";
 import LevelItem from "../../common/levelItem/LevelItem";
 import InterviewStateBtn from "../interviewBtn/InterviewStateBtn";
 
@@ -21,7 +21,7 @@ const InterviewItem = () => {
       </CompanyInfo>
       <LevelInfo>
         <LevelItem />
-        <InterviewStateBtn type="진행중"/>
+        <InterviewStateBtn type="진행중" interviewId={1} />
       </LevelInfo>
     </ItemBox>
   );
@@ -94,7 +94,6 @@ const LevelInfo = styled.div`
   justify-content: space-between;
   align-items: end;
   gap: 5px;
-  color: ${blueColor};
 `;
 
 export default InterviewItem;

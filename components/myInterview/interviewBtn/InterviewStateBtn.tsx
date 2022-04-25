@@ -5,14 +5,14 @@ import { redColor } from "../../../styles/color";
 
 type Props = {
   type: string;
-  interviewId: number;
+  interviewId?: number;
 };
 
 const InterviewStateBtn = ({ type, interviewId }: Props) => {
   const router = useRouter();
 
   const routerClickHandle = (path: number) => {
-    router.push(`/interview/${path}`);
+    router.push(`/company/${path}`);
   };
   return (
     <StateBtnBox onClick={() => routerClickHandle(interviewId)}>

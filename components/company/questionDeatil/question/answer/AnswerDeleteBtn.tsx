@@ -15,10 +15,10 @@ const DeleteBtn = styled.button`
   box-sizing: border-box;
   border-radius: 30px;
   background: white;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   :hover {
-    box-shadow: 0px 4px 8px rgba(180, 180, 180, 0.25);
+    box-shadow: 3px 5px 12px rgba(180, 180, 180, 0.35);
   }
 `;
 

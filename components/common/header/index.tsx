@@ -56,7 +56,7 @@ const Header = () => {
           <MoreMenuBox onClick={logoutHandle} openMenu={openMenu}>
             <li
               onClick={() => {
-                routerClickHandle("myInterview"), openMenuHandle;
+                routerClickHandle("interview"), openMenuHandle;
               }}
             >
               내 면접

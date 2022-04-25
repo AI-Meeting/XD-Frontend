@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { optionSelectName } from "../../lib/module/atom/interview";
-import { Container } from "../../pages/myInterview";
+import { Container } from "../../pages/interview";
 import { blueColor, grayBackgroundColor } from "../../styles/color";
 import ControlItem from "./interviewBox/ControlItem";
 import InterviewItem from "./interviewBox/InterviewItem";
@@ -48,7 +48,7 @@ const InterviewContainer = styled.section`
 `;
 
 const ContentContainer = styled.div`
-  margin: 30px auto;
+  margin: 0 auto;
   padding: 40px;
   box-sizing: border-box;
   width: 800px;

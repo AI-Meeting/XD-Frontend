@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { mainColor } from "../../../styles/color";
+import Image from "next/image";
+import { blueColor, mainColor } from "../../../styles/color";
 
 const LevelItem = () => {
   return (
@@ -21,6 +22,7 @@ const LevelItem = () => {
 };
 
 const LevelWrapper = styled.div`
+  color: ${blueColor};
   width: 230px;
   height: 60px;
   display: flex;

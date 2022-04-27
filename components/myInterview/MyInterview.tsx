@@ -5,7 +5,7 @@ import { Container } from "../../pages/interview";
 import { blueColor, grayBackgroundColor } from "../../styles/color";
 import ControlItem from "./interviewBox/ControlItem";
 import InterviewItem from "./interviewBox/InterviewItem";
-import ProfileBox from "./profileBox";
+import ProfileBox from "./profileBox/ProfileBox";
 
 const MyInterview = () => {
   const selectedName = useRecoilValue(optionSelectName);

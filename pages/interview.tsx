@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { NextPage } from "next";
-import Header from "../components/common/header";
-import ControllNavBar from "../components/company/controllNavBar";
-import MyInterview from "../components/myInterview";
+import Header from "../components/common/header/Header";
+import ControllNavBar from "../components/company/controllNavBar/ControllNavBar";
+import MyInterview from "../components/myInterview/MyInterview";
 
 const InterviewPage: NextPage<{}> = () => {
   return (

@@ -40,6 +40,7 @@ const QuestionListBox = styled.div`
   min-height: 500px;
   background: white;
   border-radius: 10px;
+  border: 1px solid #e3e4e3;
 `;
 
 const QuestionListWrap = styled.article`

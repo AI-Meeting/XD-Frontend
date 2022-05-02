@@ -5,7 +5,7 @@ import {
   grayBorderColor,
   mainColor,
 } from "../../../../../styles/color";
-import AnswerItem from "../answer";
+import AnswerItem from "../answer/Answer";
 
 type Props = {};
 

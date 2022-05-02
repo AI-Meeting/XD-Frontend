@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import { FC } from "react";
 import { Container } from "../../../pages/interview";
 import { grayBackgroundColor } from "../../../styles/color";
-import Question from "./question/question";
-import Review from "./question/review";
+import Question from "./question/question/Questioin";
+import Review from "./question/review/Review";
 
 type Props = {};
 
@@ -40,6 +40,7 @@ const QuestionListBox = styled.div`
   min-height: 500px;
   background: white;
   border-radius: 10px;
+  border: 1px solid #e3e4e3;
 `;
 
 const QuestionListWrap = styled.article`

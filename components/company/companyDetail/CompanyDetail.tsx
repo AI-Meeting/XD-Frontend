@@ -34,14 +34,21 @@ const Container = styled.section`
   width: 800px;
   margin: 0 auto;
   padding: 30px 0;
-  
+
+  > span {
+    box-shadow: 0 3px 8px #e8e8e8;
+    border: 1px solid #e3e4e3;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+
   img {
     object-fit: cover;
-
   }
 `;
 
 const InfoItem = styled.div`
+  margin-top: 20px;
   width: 100%;
   display: flex;
   flex-direction: row;

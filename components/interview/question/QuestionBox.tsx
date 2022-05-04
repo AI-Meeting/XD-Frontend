@@ -29,9 +29,9 @@ const QuestionBox: FC = () => {
       }
 
       if (event.key === "Enter") {
-        if (window.confirm("리뷰를 작성하시겠습니까?")) {
-          handleSTTStopListening();
-        }
+        // if (window.confirm("리뷰를 작성하시겠습니까?")) {
+        //   handleSTTStopListening();
+        // }
       }
     },
     [handleSTTStopListening]

@@ -29,9 +29,9 @@ const QuestionBox: FC = () => {
       }
 
       if (event.key === "Enter") {
-        // if (window.confirm("리뷰를 작성하시겠습니까?")) {
-        //   handleSTTStopListening();
-        // }
+        if (window.confirm("리뷰를 작성하시겠습니까?")) {
+          handleSTTStopListening();
+        }
       }
     },
     [handleSTTStopListening]
@@ -51,7 +51,7 @@ const QuestionBox: FC = () => {
       </AnimationBox>
       <ReactTextareaAutosize
         minRows={5}
-          value={transcript}
+        value={transcript}
         placeholder="질문에 대해 음성으로 답변해주시면 XD가 인식하여 변환합니다."
       />
       {listening ? (

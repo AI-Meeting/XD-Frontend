@@ -1,5 +1,11 @@
 import { keyframes } from "@emotion/react";
 
+export const backgroundAnimation = keyframes`
+0%{background-position:0% 50%} 
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+`;
+
 export const circle1Animation = keyframes`
   from {
     transform : translate(0px, 0px);

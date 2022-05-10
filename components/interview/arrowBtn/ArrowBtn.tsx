@@ -4,11 +4,12 @@ import { FC } from "react";
 
 type Props = {
   driection: string;
+  btnClickHandle?: () => void;
 };
 
-const ArrowBtn: FC<Props> = ({ driection }) => {
+const ArrowBtn: FC<Props> = ({ driection, btnClickHandle }) => {
   return (
-    <ArrowBtnWrap>
+    <ArrowBtnWrap onClick={btnClickHandle}>
       <Image
         src={`/assets/icon/${driection}Icon.svg`}
         width={10}

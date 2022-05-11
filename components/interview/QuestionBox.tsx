@@ -2,10 +2,12 @@ import styled from "@emotion/styled";
 import { FC, useRef } from "react";
 import { useSpeechRecognition } from "react-speech-recognition";
 import ReactTextareaAutosize from "react-textarea-autosize";
-import AnimationBox from "./AnimationBox";
-import ControllBtnBar from "./ControllBtnBar";
+import AnimationBox from "./animation/AnimationBox";
+import ControllBtnBar from "./controllBtn/ControllBtnBar";
 
-const QuestionBox: FC = () => {
+type Props = {};
+
+const QuestionBox: FC<Props> = ({}) => {
   const videoRef = useRef<any>(null);
   const { listening, transcript } = useSpeechRecognition();
 

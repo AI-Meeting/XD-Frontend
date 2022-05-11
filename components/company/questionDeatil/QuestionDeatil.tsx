@@ -29,6 +29,7 @@ const QuestionContainer = styled(Container)`
   background: ${grayBackgroundColor};
   padding: 40px 0;
   box-sizing: border-box;
+  border-top: 1px solid #e3e4e3;
 `;
 
 const QuestionListBox = styled.div`

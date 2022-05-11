@@ -118,7 +118,7 @@ const ControllBtnBar: FC<Props> = ({ listening, videoRef }) => {
 
 const Container = styled.div`
   position: fixed;
-  bottom: 70px;
+  bottom: 3%;
   padding: 20px;
   width: 300px;
   height: 60px;

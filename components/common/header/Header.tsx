@@ -137,6 +137,7 @@ const MoreMenuBox = styled.div<{ openMenu: boolean }>`
   justify-content: center;
   flex-direction: column;
   opacity: ${({ openMenu }) => (openMenu ? 1 : 0)};
+  z-index: ${({ openMenu }) => (openMenu ? 6 : -1)};
   transition: all 0.2s;
   position: relative;
   top: 16px;

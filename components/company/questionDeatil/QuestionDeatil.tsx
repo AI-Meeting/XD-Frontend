@@ -25,9 +25,10 @@ const QuestionDetail: FC<Props> = () => {
   );
 };
 
-const QuestionContainer = styled(Container)`
-  background: ${grayBackgroundColor};
-  padding: 40px 0;
+const QuestionContainer = styled.section`
+  position: relative;
+  top: -100px;
+  padding: 20px 0;
   box-sizing: border-box;
   border-top: 1px solid #e3e4e3;
 `;
@@ -42,6 +43,8 @@ const QuestionListBox = styled.div`
   background: white;
   border-radius: 10px;
   border: 1px solid #e3e4e3;
+  border-radius: 3px;
+  border: 1px solid #f0f0f0;
 `;
 
 const QuestionListWrap = styled.article`

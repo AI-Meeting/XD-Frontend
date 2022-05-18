@@ -7,12 +7,14 @@ import { Container } from "../interview";
 
 const CompanyDetailPage: NextPage = () => {
   return (
-    <Container>
+    <>
       <Header />
-      <ComapnyDetail />
-      <QuestionDetail />
-      <ControllNavBar />
-    </Container>
+      <Container>
+        <ComapnyDetail />
+        <QuestionDetail />
+        <ControllNavBar />
+      </Container>
+    </>
   );
 };
 

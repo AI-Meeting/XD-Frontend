@@ -40,7 +40,7 @@ const MyInterview = () => {
 
 const InterviewContainer = styled.section`
   border-top: 1px solid #e3e4e3;
-  padding: 40px 0;
+  padding: 20px 0;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -56,8 +56,8 @@ const ContentContainer = styled.div`
   height: auto;
   min-height: 500px;
   background: white;
-  border-radius: 10px;
-  border: 1px solid #e3e4e3;
+  border-radius: 3px;
+  border: 1px solid #f0f0f0;
 `;
 
 const ContentMent = styled.div`

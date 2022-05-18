@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
+import { FC } from "react";
 import { blueColor, grayTextColor } from "../../../styles/color";
 import LevelItem from "../../common/levelItem/LevelItem";
 import InterviewStateBtn from "../interviewBtn/InterviewStateBtn";
 
-const InterviewItem = () => {
+const InterviewItem: FC = () => {
   return (
     <ItemBox>
       <CompanyInfo>
@@ -34,11 +35,16 @@ const ItemBox = styled.div`
   height: 200px;
   border: 1px solid #e3e4e35e;
   box-sizing: border-box;
-  box-shadow: 0px 2px 5px rgba(204, 204, 204, 0.25);
+
   border-radius: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  :hover {
+    transition: 0.5s ease;
+    box-shadow: 0px 2px 5px rgba(204, 204, 204, 0.25);
+  }
 `;
 
 const CompanyInfo = styled.div`

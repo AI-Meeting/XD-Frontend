@@ -12,6 +12,7 @@ a {
 }
 
 * {
+  font-family: "Noto Sans KR", sans-serif;
   padding: 0;
   margin: 0;
   outline: none;

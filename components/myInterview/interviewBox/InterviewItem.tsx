@@ -40,9 +40,9 @@ const ItemBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  transition: 0.3s ease-in;
 
   :hover {
-    transition: 0.5s ease;
     box-shadow: 0px 2px 5px rgba(204, 204, 204, 0.25);
   }
 `;

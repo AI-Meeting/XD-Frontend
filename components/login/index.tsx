@@ -6,17 +6,17 @@ import DefaultInput, { DefaultInputType } from "../common/input/default";
 
 const Login: FC = () => {
   const [loginValue, setLoginValue] = useState<{
-    id: string;
+    email: string;
     password: string;
   }>({
-    id: "",
+    email: "",
     password: "",
   });
 
   const setId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginValue({
       ...loginValue,
-      id: e.target.value,
+      email: e.target.value,
     });
   };
 
@@ -30,10 +30,10 @@ const Login: FC = () => {
   const inputData: DefaultInputType[] = [
     {
       width: 280,
-      title: "아이디",
+      title: "이메일",
       inputFontSize: 12,
       titleFontSize: 16,
-      value: loginValue.id,
+      value: loginValue.email,
       onChangeFunction: setId,
       margin: "0px 0px 20px 0px",
     },

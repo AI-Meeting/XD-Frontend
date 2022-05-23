@@ -5,7 +5,7 @@ import ControllNavBar from "../../components/company/controllNavBar/ControllNavB
 import QuestionDetail from "../../components/company/questionDeatil/QuestionDeatil";
 import { Container } from "../interview";
 
-const CompanyDetailPage: NextPage<{}> = () => {
+const CompanyDetailPage: NextPage = () => {
   return (
     <Container>
       <Header />

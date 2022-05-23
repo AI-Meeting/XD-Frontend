@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import Image from "next/image";
-import { string } from "prop-types";
+import Link from "next/link";
 import React, { FC, useEffect, useState } from "react";
-import DefaultInput from "../common/input/default";
+import LoginHeader from "../common/header/LoginHeader";
+import DefaultInput, { DefaultInputType } from "../common/input/default";
 
 const Login: FC = () => {
   const [loginValue, setLoginValue] = useState<{
@@ -12,10 +12,6 @@ const Login: FC = () => {
     id: "",
     password: "",
   });
-
-  useEffect(() => {
-    console.log(loginValue);
-  }, [loginValue]);
 
   const setId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginValue({
@@ -31,51 +27,86 @@ const Login: FC = () => {
     });
   };
 
+  const inputData: DefaultInputType[] = [
+    {
+      width: 280,
+      title: "아이디",
+      inputFontSize: 12,
+      titleFontSize: 16,
+      value: loginValue.id,
+      onChangeFunction: setId,
+      margin: "0px 0px 20px 0px",
+    },
+    {
+      width: 280,
+      title: "비밀번호",
+      inputFontSize: 12,
+      titleFontSize: 16,
+      value: loginValue.password,
+      onChangeFunction: setPassword,
+      margin: "0px",
+    },
+  ];
+
   return (
-    <Container>
+    <LoginContainer>
       <LoginContent>
-        <Image src={"/assets/icon/logo.svg"} width={20} height={20} />
-        <DefaultInput
-          width={280}
-          title="아이디"
-          inputFontSize={12}
-          titleFontSize={16}
-          value={loginValue.id}
-          onChangeFunction={setId}
-          margin="0px 0px 20px 0px"
-        />
-        <DefaultInput
-          width={280}
-          title="비밀번호"
-          inputFontSize={12}
-          titleFontSize={16}
-          value={loginValue.password}
-          onChangeFunction={setPassword}
-          margin="0px"
-        />
+        <LoginHeader />
+        <LoginInputContainer>
+          {inputData.map((v: DefaultInputType, i: number) => (
+            <DefaultInput key={i} {...v} />
+          ))}
+        </LoginInputContainer>
+        <LoginButton>login</LoginButton>
+        <SignUpDescription>
+          아직 계정이 없으신가요?<Link href="/signup"> 간편 가입하기</Link>
+        </SignUpDescription>
       </LoginContent>
-    </Container>
+    </LoginContainer>
   );
 };
 
-const Container = styled.main`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const LoginContent = styled.div`
+const LoginContainer = styled.div`
   width: 400px;
   height: 580px;
   border: 1px solid #e3e4e3;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
-const Logo = styled.div``;
+const LoginContent = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const LoginInputContainer = styled.div`
+  margin-top: 50px;
+`;
+
+const LoginButton = styled.button`
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #514ef6;
+  padding: 13px 122px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0px 2px 13px rgba(46, 46, 46, 0.25);
+  margin-top: 45px;
+`;
+
+const SignUpDescription = styled.p`
+  font-size: 12px;
+  color: #6f828c;
+  align-self: center;
+  margin-top: 20px;
+
+  & a {
+    color: black;
+  }
+`;
 
 export default Login;

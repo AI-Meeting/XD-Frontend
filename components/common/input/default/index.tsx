@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { FC } from "react";
 
-type Props = {
+export type DefaultInputType = {
   width: number;
   inputFontSize: number;
   title: string;
@@ -11,7 +11,7 @@ type Props = {
   margin: string;
 };
 
-const DefaultInput: FC<Props> = ({
+const DefaultInput: FC<DefaultInputType> = ({
   width,
   inputFontSize,
   title,
@@ -49,9 +49,9 @@ const Input = styled.input<{
   fontSize: number;
 }>`
   width: 100%;
-  margin-top: 6px;
+  margin-top: 10px;
   font-size: ${({ fontSize }) => `${fontSize}px`};
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #e3e4e3;
 `;
 

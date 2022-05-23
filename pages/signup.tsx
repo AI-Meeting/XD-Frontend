@@ -1,12 +1,11 @@
 import styled from "@emotion/styled";
-import { NextPage } from "next";
 import React from "react";
-import Login from "../components/login";
+import Signup from "../components/signup";
 
-const LoginPage: NextPage<{}> = () => {
+const SignupPage = () => {
   return (
     <Container>
-      <Login />
+      <Signup />
     </Container>
   );
 };
@@ -19,4 +18,4 @@ const Container = styled.main`
   align-items: center;
 `;
 
-export default LoginPage;
+export default SignupPage;

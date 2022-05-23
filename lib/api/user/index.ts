@@ -16,7 +16,7 @@ export default {
 
   getMyInterviewReview() {
     return request({
-      url: "/use/interview/review",
+      url: "/user/interview/review",
     });
   },
 };

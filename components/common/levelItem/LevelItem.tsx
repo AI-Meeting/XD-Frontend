@@ -1,21 +1,26 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
+import { FC } from "react";
 import { blueColor, mainColor } from "../../../styles/color";
 
-const LevelItem = () => {
+type Props = {
+  level: number;
+};
+
+const LevelItem: FC<Props> = ({ level }) => {
   return (
     <LevelWrapper>
       <div className="level_num">
         <img src="/assets/icon/starIcon.svg" alt="난이도 표시" />
-        <span>3.9</span>
+        <span>{level}</span>
       </div>
       <LevelText>
         <span>쉬움</span>
         <span>보통</span>
         <span>어려움</span>
       </LevelText>
-      <LevelBar size={5}>
-        <div className="level_bar"></div>
+      <LevelBar size={level}>
+        <div className="level_bar" />
       </LevelBar>
     </LevelWrapper>
   );

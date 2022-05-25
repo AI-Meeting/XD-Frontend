@@ -1,10 +1,16 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
+import { FC } from "react";
+import { CompanyType } from "../../../@types/CompanyType";
 import { blueColor, grayTextColor } from "../../../styles/color";
 import LevelItem from "../../common/levelItem/LevelItem";
 import CompanyImage from "./CompanyImage";
 
-const ComapnyDetail = () => {
+type Props = {
+  companyData: CompanyType;
+};
+
+const ComapnyDetail: FC<Props> = ({ companyData }) => {
   return (
     <>
       <CompanyImage />

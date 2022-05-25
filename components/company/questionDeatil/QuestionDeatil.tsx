@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
 import { FC } from "react";
+import { CompanyType } from "../../../@types/CompanyType";
 import { Container } from "../../../pages/interview";
 import { grayBackgroundColor } from "../../../styles/color";
 import Question from "./question/question/Questioin";
 import Review from "./question/review/Review";
 
-type Props = {};
+type Props = {
+  companyData: CompanyType;
+};
 
-const QuestionDetail: FC<Props> = () => {
+const QuestionDetail: FC<Props> = ({ companyData }) => {
   return (
     <QuestionContainer>
       <QuestionListBox>

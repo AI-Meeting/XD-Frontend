@@ -1,15 +1,17 @@
+import "regenerator-runtime/runtime";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import { ReactQueryContextProvider } from "../contexts/ReactQueryContext";
-import "../styles/globals.css";
+import GlobalStyle from "../styles/globalStyle";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ReactQueryContextProvider>
-      <RecoilRoot>
+    <RecoilRoot>
+      <ReactQueryContextProvider>
+        <GlobalStyle />
         <Component {...pageProps} />
-      </RecoilRoot>
-    </ReactQueryContextProvider>
+      </ReactQueryContextProvider>
+    </RecoilRoot>
   );
 }
 

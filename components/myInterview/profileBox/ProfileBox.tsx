@@ -1,34 +1,46 @@
 import styled from "@emotion/styled";
+import { useMyInterview, useUserInfo } from "../../../queries/User";
 import { blueColor, grayTextColor, mainColor } from "../../../styles/color";
 
 const ProfileBox = () => {
+  const { data: user } = useUserInfo();
+  const { data: myInterview } = useMyInterview();
+
   return (
     <ProfileContainer>
-      <div id="profile_img" />
-      <MyInfoBox>
-        <div className="name_box">
-          <span>Silvebreen</span>
-          <span>학생</span>
-        </div>
-        <span>대덕소프트웨어마이스터고등학교</span>
-      </MyInfoBox>
+      <div className="wrapper">
+        <div id="profile_img" />
+        <MyInfoBox>
+          <div className="name_box">
+            <span>{user?.data.name}</span>
+            <span>학생</span>
+          </div>
+          <span>{user?.data.school}</span>
+        </MyInfoBox>
+      </div>
     </ProfileContainer>
   );
 };
 
 const ProfileContainer = styled.section`
-  width: 800px;
+  width: 100%;
   height: 250px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 40px;
+  background: white;
 
   #profile_img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     background: ${mainColor};
+  }
+
+  .wrapper {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 800px;
+    height: 100%;
   }
 `;
 

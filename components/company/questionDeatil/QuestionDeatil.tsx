@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
 import { FC } from "react";
+import { CompanyType } from "../../../@types/CompanyType";
 import { Container } from "../../../pages/interview";
 import { grayBackgroundColor } from "../../../styles/color";
 import Question from "./question/question/Questioin";
 import Review from "./question/review/Review";
 
-type Props = {};
+type Props = {
+  companyData: CompanyType;
+};
 
-const QuestionDetail: FC<Props> = () => {
+const QuestionDetail: FC<Props> = ({ companyData }) => {
   return (
     <QuestionContainer>
       <QuestionListBox>
@@ -25,10 +28,12 @@ const QuestionDetail: FC<Props> = () => {
   );
 };
 
-const QuestionContainer = styled(Container)`
-  background: ${grayBackgroundColor};
-  padding: 40px 0;
+const QuestionContainer = styled.section`
+  position: relative;
+  top: -100px;
+  padding: 20px 0;
   box-sizing: border-box;
+  border-top: 1px solid #e3e4e3;
 `;
 
 const QuestionListBox = styled.div`
@@ -41,6 +46,8 @@ const QuestionListBox = styled.div`
   background: white;
   border-radius: 10px;
   border: 1px solid #e3e4e3;
+  border-radius: 3px;
+  border: 1px solid #f0f0f0;
 `;
 
 const QuestionListWrap = styled.article`

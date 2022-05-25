@@ -6,12 +6,12 @@ import GlobalStyle from "../styles/globalStyle";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ReactQueryContextProvider>
-      <RecoilRoot>
+    <RecoilRoot>
+      <ReactQueryContextProvider>
         <GlobalStyle />
         <Component {...pageProps} />
-      </RecoilRoot>
-    </ReactQueryContextProvider>
+      </ReactQueryContextProvider>
+    </RecoilRoot>
   );
 }
 

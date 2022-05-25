@@ -1,28 +1,42 @@
 import styled from "@emotion/styled";
-import { FC, useRef } from "react";
+import axios from "axios";
+import { FC, useEffect, useRef } from "react";
 import { useSpeechRecognition } from "react-speech-recognition";
 import ReactTextareaAutosize from "react-textarea-autosize";
-import AnimationBox from "./AnimationBox";
-import ControllBtnBar from "./ControllBtnBar";
+import AnimationBox from "./animation/AnimationBox";
+import ControllBtnBar from "./controllBtn/ControllBtnBar";
 
-const QuestionBox: FC = () => {
+type Props = {};
+
+const QuestionBox: FC<Props> = ({}) => {
   const videoRef = useRef<any>(null);
   const { listening, transcript } = useSpeechRecognition();
 
-  // const handleSubmitReview = useCallback(
-  //   (event: KeyboardEvent<HTMLTextAreaElement>) => {
-  //     if (event.shiftKey) {
-  //       return;
-  //     }
+  useEffect(() => {
+    const test = async () => {
+      let text = `<speak> 그는 그렇게 말했습니다. 
+    <voice name="MAN_DIALOG_BRIGHT">잘 지냈어? 나도 잘 지냈어.</voice> 
+    <voice name="WOMAN_DIALOG_BRIGHT" speechStyle="SS_ALT_FAST_1">금요일이 좋아요.</voice> </speak>`;
 
-  //     if (event.key === "Enter") {
-  //       if (window.confirm("리뷰를 작성하시겠습니까?")) {
-  //         handleSTTStopListening();
-  //       }
-  //     }
-  //   },
-  //   [handleSTTStopListening]
-  // );
+      try {
+        const { data } = await axios.post(
+          "https://kakaoi-newtone-openapi.kakao.com/v1/synthesize",
+          text,
+          {
+            headers: {
+              Authorization: `KakaoAK ${process.env.NEXT_PUBLIC_KAKAO_KEY}`,
+              "Content-Type": `application/xml`,
+            },
+            responseType: "arraybuffer",
+          }
+        );
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    test();
+  }, []);
 
   return (
     <QuestionContainer>

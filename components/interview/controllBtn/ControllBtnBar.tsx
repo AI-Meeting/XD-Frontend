@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 import { FC, useCallback, useEffect, useState } from "react";
 import SpeechRecognition from "react-speech-recognition";
+import { useRecoilState } from "recoil";
+import { stopModalAtom } from "../../../lib/module/atom/interview";
 import { redColor } from "../../../styles/color";
 
 type Props = {
@@ -10,6 +12,7 @@ type Props = {
 };
 
 const ControllBtnBar: FC<Props> = ({ listening, videoRef }) => {
+  const [modalOpen, setModalOpen] = useRecoilState(stopModalAtom);
   const [videoControll, setVideoControll] = useState(false);
   const constraints = { audio: false, video: true };
 
@@ -25,6 +28,10 @@ const ControllBtnBar: FC<Props> = ({ listening, videoRef }) => {
 
   const videoStart = () => {
     let mediaRecorder = null;
+  };
+
+  const stopInterviewHandle = () => {
+    setModalOpen(true);
   };
 
   useEffect(() => {
@@ -111,14 +118,16 @@ const ControllBtnBar: FC<Props> = ({ listening, videoRef }) => {
           </button>
         )}
       </BtnWrapper>
-      <button className="end_btn">종료</button>
+      <button className="end_btn" onClick={stopInterviewHandle}>
+        종료
+      </button>
     </Container>
   );
 };
 
 const Container = styled.div`
   position: fixed;
-  bottom: 70px;
+  bottom: 3%;
   padding: 20px;
   width: 300px;
   height: 60px;

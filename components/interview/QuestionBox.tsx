@@ -30,18 +30,6 @@ const QuestionBox: FC<Props> = ({}) => {
             responseType: "arraybuffer",
           }
         );
-
-        console.log(data);
-
-        // const context = new AudioContext();
-        // context.decodeAudioData(data, (buffer) => {
-        //   const source = context.createBufferSource();
-        //   source.buffer = buffer;
-        //   source.connect(context.destination);
-        //   source.start(0);
-
-        //   console.log(source, buffer);
-        // });
       } catch (e) {
         console.log(e);
       }

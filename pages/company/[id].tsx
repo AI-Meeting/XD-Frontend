@@ -14,8 +14,6 @@ const CompanyDetailPage: NextPage = () => {
 
   const { data: companyData } = useCompany(Number(id));
 
-  console.log(companyData?.data);
-
   return (
     <>
       <Header />

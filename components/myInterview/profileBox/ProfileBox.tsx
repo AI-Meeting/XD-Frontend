@@ -6,8 +6,6 @@ const ProfileBox = () => {
   const { data: user } = useUserInfo();
   const { data: myInterview } = useMyInterview();
 
-  console.log(myInterview?.data);
-
   return (
     <ProfileContainer>
       <div className="wrapper">

@@ -14,7 +14,7 @@ const QuestionDetail: FC<Props> = ({ companyData }) => {
   return (
     <QuestionContainer>
       <QuestionListBox>
-        <Review />
+        <Review companyData={companyData} />
         <QuestionListWrap>
           <h2>면접 질문</h2>
           <Question />

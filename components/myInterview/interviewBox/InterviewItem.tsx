@@ -24,7 +24,7 @@ const InterviewItem: FC<Props> = ({ data }) => {
       </CompanyInfo>
       <LevelInfo>
         <LevelItem level={data.level} />
-        <InterviewStateBtn type="진행중" interviewId={1} />
+        <InterviewStateBtn type="진행중" interviewId={data.id} />
       </LevelInfo>
     </ItemBox>
   );

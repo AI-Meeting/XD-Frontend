@@ -1,13 +1,10 @@
-import { StoreID } from "recoil";
-
 export interface CompanyType {
   id: number;
-  userName: string;
+  userName?: string;
   name: string;
   location: string;
   level: number;
   job: string;
-  x;
   field: string;
   description: string;
   question: QuestionType[];

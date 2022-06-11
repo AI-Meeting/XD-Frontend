@@ -6,7 +6,7 @@ const LevelItem = () => {
   return (
     <LevelWrapper>
       <div className="level_num">
-        <img src="./assets/icon/starIcon.svg" alt="난이도 표시" />
+        <img src="/assets/icon/starIcon.svg" alt="난이도 표시" />
         <span>3.9</span>
       </div>
       <LevelText>
@@ -29,6 +29,16 @@ const LevelWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  .level_num {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & img {
+      width: 20px;
+    }
+  }
 `;
 
 const LevelText = styled.div`

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import Header from "../components/common/header/Header";
 import CompanyList from "../components/company/companyList/CompanyList";
+import NaverMap from "../components/naverMap";
 
 export default function Home() {
   return (
@@ -11,7 +12,9 @@ export default function Home() {
       <SideBarContainer>
         <CompanyList />
       </SideBarContainer>
-      <MainContainer></MainContainer>
+      <MainContainer>
+        <NaverMap />
+      </MainContainer>
     </CompanyListLayout>
   );
 }

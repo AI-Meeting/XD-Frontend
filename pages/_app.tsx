@@ -16,8 +16,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <GlobalStyle />
         <Component {...pageProps} />
-      </RecoilRoot>
-    </ReactQueryContextProvider>
+      </ReactQueryContextProvider>
+    </RecoilRoot>
   );
 }
 

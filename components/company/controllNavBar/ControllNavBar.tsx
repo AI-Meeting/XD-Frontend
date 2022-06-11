@@ -5,11 +5,20 @@ import { mainColor } from "../../../styles/color";
 
 const ControllNavBar: FC = () => {
   const router = useRouter();
+  const companyId = 1;
+  const questionId = 3;
 
   return (
     <NavBarWrap>
       <div className="btn_box">
-        <button id="start_btn" onClick={() => router.push("/company/process")}>
+        <button
+          id="start_btn"
+          onClick={() =>
+            router.push(
+              `/company/process/${companyId}?questionId=${questionId}`
+            )
+          }
+        >
           모의 면접 진행
         </button>
         <button id="end_btn">작성 완료</button>

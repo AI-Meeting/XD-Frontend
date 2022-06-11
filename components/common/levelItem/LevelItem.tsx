@@ -44,6 +44,16 @@ const LevelWrapper = styled.div<{ width: number }>`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  .level_num {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & img {
+      width: 20px;
+    }
+  }
 `;
 
 const LevelText = styled.div<{

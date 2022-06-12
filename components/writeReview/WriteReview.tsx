@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React, { FC } from "react";
+import FormBox from "./formBox/FormBox";
 
 const WriteReview: FC = () => {
   return (
@@ -8,6 +9,7 @@ const WriteReview: FC = () => {
       <Description>
         면접 후기 등록을 통해 자신의 면접을 공유 할 수 있어요.
       </Description>
+      <FormBox />
     </Container>
   );
 };

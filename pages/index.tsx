@@ -4,6 +4,7 @@ import CompanyList from "../components/company/companyList/CompanyList";
 import NaverMap from "../components/naverMap";
 
 export default function Home() {
+
   return (
     <CompanyListLayout>
       <HeaderContainer>

@@ -1,27 +1,30 @@
 import styled from "@emotion/styled";
+import { FC } from "react";
+import { CompanyListType } from "../../../@types/CompanyType";
 import { blueColor, grayTextColor } from "../../../styles/color";
 import LevelItem from "../../common/levelItem/LevelItem";
 import InterviewStateBtn from "../interviewBtn/InterviewStateBtn";
 
-const InterviewItem = () => {
+type Props = {
+  data: CompanyListType;
+};
+
+const InterviewItem: FC<Props> = ({ data }) => {
   return (
     <ItemBox>
       <CompanyInfo>
         <NameBox>
-          <span>토스</span>
-          <span>마케팅/IT</span>
+          <span>{data.name}</span>
+          <span>{data.field}</span>
         </NameBox>
-        <span id="location">서울 강남구 역삼동</span>
-        <div id="field">프론트엔드 분야</div>
-        <div id="review_content">
-          생각보다 어려웠는데 뭐 할만 했던 것 같아요~~~ 개발쪽보다는 기초를 많이
-          물어보시더라구요 기초 탄탄하게 쌓고 가시면
-        </div>
-        <span id="question_cnt">질문 10개</span>
+        <span id="location">{data.location}</span>
+        <div id="field">{data.job}</div>
+        <div id="review_content">{data.description}</div>
+        <span id="question_cnt">질문 {data.questionCnt}개</span>
       </CompanyInfo>
       <LevelInfo>
-        <LevelItem />
-        <InterviewStateBtn type="진행중" interviewId={1} />
+        <LevelItem level={data.level} />
+        <InterviewStateBtn type="진행중" interviewId={data.id} />
       </LevelInfo>
     </ItemBox>
   );
@@ -34,11 +37,16 @@ const ItemBox = styled.div`
   height: 200px;
   border: 1px solid #e3e4e35e;
   box-sizing: border-box;
-  box-shadow: 0px 2px 5px rgba(204, 204, 204, 0.25);
+
   border-radius: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  transition: 0.3s ease-in;
+
+  :hover {
+    box-shadow: 0px 2px 5px rgba(204, 204, 204, 0.25);
+  }
 `;
 
 const CompanyInfo = styled.div`

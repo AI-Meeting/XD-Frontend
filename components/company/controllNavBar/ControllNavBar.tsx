@@ -1,12 +1,30 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 import { FC } from "react";
+import { CompanyType } from "../../../@types/CompanyType";
 import { mainColor } from "../../../styles/color";
 
-const ControllNavBar: FC = () => {
+type Props = {
+  companyData: CompanyType;
+};
+
+const ControllNavBar: FC<Props> = ({ companyData }) => {
+  const router = useRouter();
+  const questionId = 3;
+
   return (
     <NavBarWrap>
       <div className="btn_box">
-        <button id="start_btn">모의 면접 진행</button>
+        <button
+          id="start_btn"
+          onClick={() =>
+            router.push(
+              `/company/process/${companyData.id}?questionId=${questionId}`
+            )
+          }
+        >
+          모의 면접 진행
+        </button>
         <button id="end_btn">작성 완료</button>
       </div>
     </NavBarWrap>
@@ -31,6 +49,7 @@ const NavBarWrap = styled.section`
     gap: 30px;
 
     button {
+      cursor: pointer;
       padding: 15px 30px;
       border: 1px solid ${mainColor};
       box-sizing: border-box;

@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
+import { CompanyListType } from "../../@types/CompanyType";
 import { optionSelectName } from "../../lib/module/atom/interview";
 import { Container } from "../../pages/interview";
+import { useMyInterview, useMyInterviewReview } from "../../queries/User";
 import { blueColor, grayBackgroundColor } from "../../styles/color";
 import ControlItem from "./interviewBox/ControlItem";
 import InterviewItem from "./interviewBox/InterviewItem";
@@ -9,6 +11,8 @@ import ProfileBox from "./profileBox/ProfileBox";
 
 const MyInterview = () => {
   const selectedName = useRecoilValue(optionSelectName);
+  const { data: myInterview } = useMyInterview();
+  const { data: myInterviewReview } = useMyInterviewReview();
 
   const selectNameMentHandle = () => {
     if (selectedName === "등록한 면접 후기") {
@@ -18,6 +22,16 @@ const MyInterview = () => {
     }
   };
 
+  const selectNameDataHandle = () => {
+    if (selectedName === "등록한 면접 후기") {
+      return myInterviewReview?.data;
+    } else {
+      return myInterview?.data;
+    }
+  };
+
+  console.log(myInterview?.data, myInterviewReview?.data);
+
   return (
     <Container>
       <ProfileBox />
@@ -26,11 +40,9 @@ const MyInterview = () => {
           <ControlItem />
           <ContentMent>{selectNameMentHandle()}</ContentMent>
           <ReviewContainer>
-            <InterviewItem />
-            <InterviewItem />
-            <InterviewItem />
-            <InterviewItem />
-            <InterviewItem />
+            {selectNameDataHandle()?.map((interview: CompanyListType) => (
+              <InterviewItem key={interview.id} data={interview} />
+            ))}
           </ReviewContainer>
         </ContentContainer>
       </InterviewContainer>
@@ -39,7 +51,8 @@ const MyInterview = () => {
 };
 
 const InterviewContainer = styled.section`
-  padding: 40px 0;
+  border-top: 1px solid #e3e4e3;
+  padding: 20px 0;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -55,7 +68,8 @@ const ContentContainer = styled.div`
   height: auto;
   min-height: 500px;
   background: white;
-  border-radius: 10px;
+  border-radius: 3px;
+  border: 1px solid #f0f0f0;
 `;
 
 const ContentMent = styled.div`

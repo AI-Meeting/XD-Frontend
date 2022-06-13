@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { FC } from "react";
+import { QuetionType } from "../../../../../@types/CompanyType";
 import {
   darkBlueColor,
   grayBorderColor,
@@ -7,16 +8,20 @@ import {
 } from "../../../../../styles/color";
 import AnswerItem from "../answer/Answer";
 
-type Props = {};
+type Props = {
+  question: QuetionType;
+};
 
-const Question: FC<Props> = () => {
+const Question: FC<Props> = ({ question }) => {
   return (
     <QuestionWrap>
-      <div className="question_box">
+      <span>
         <strong>Q. </strong>
-        <span>저희 우아한 형제들에 지원한 동기가 계신가요?</span>
-      </div>
-      <AnswerItem />
+        {question.question}
+      </span>
+      {question?.questionAnswers?.map((answer) => (
+        <AnswerItem key={answer.id} answer={answer} />
+      ))}
     </QuestionWrap>
   );
 };
@@ -24,15 +29,12 @@ const QuestionWrap = styled.div`
   margin-top: 20px;
   padding: 20px 0;
   border-bottom: 1px solid ${grayBorderColor};
-
-  .question_box {
-    strong {
-      color: ${mainColor};
-    }
-    span {
-      font-size: 18px;
-      color: ${darkBlueColor};
-    }
+  strong {
+    color: ${mainColor};
+  }
+  span {
+    font-size: 18px;
+    color: ${darkBlueColor};
   }
 `;
 

@@ -11,8 +11,6 @@ type Props = {
 };
 
 const ComapnyDetail: FC<Props> = ({ companyData }) => {
-  console.log(companyData);
-
   return (
     <>
       <CompanyImage />

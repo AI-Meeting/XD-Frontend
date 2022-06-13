@@ -15,11 +15,9 @@ const QuestionDetail: FC<Props> = ({ companyData }) => {
         <Review companyData={companyData} />
         <QuestionListWrap>
           <h2>면접 질문</h2>
-          <Question />
-          <Question />
-          <Question />
-          <Question />
-          <Question />
+          {companyData?.question?.map((question, idx) => (
+            <Question key={idx} question={question} />
+          ))}
         </QuestionListWrap>
       </QuestionListBox>
     </QuestionContainer>

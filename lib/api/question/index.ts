@@ -24,7 +24,7 @@ export default {
   deleteQuestionAnswer(answerId: number) {
     return request({
       method: "delete",
-      url: `/question/answer?answerId=${answerId}`,
+      url: `/question/answer/${answerId}`,
     });
   },
   patchQuestionAnswer(answer: QuestionAnwerType, answerId: number) {

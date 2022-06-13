@@ -17,7 +17,7 @@ const AnswerDeleteBtn: FC<Props> = ({ answerId }) => {
     () => question.deleteQuestionAnswer(answerId),
     {
       onSuccess: () => {
-        client.invalidateQueries(queryKeys.questionAnswer);
+        client.invalidateQueries(queryKeys.company);
       },
       onError: () => {},
     }

@@ -7,15 +7,23 @@ export interface CompanyType {
   job: string;
   field: string;
   description: string;
-  question: QuestionType[];
+  question: QuetionType[];
 }
 
-export interface QuestionType {
+export interface QuetionType {
+  id: number;
   questionId: number;
-  answerId: number;
+  question: string;
+  questionAnswers: QuestionAnswerType[];
+}
+
+export interface QuestionAnswerType {
+  id: number;
   answer: string;
-  voiceUrl: string;
+  questionId: number;
+  userId: number;
   videoUrl: string;
+  voiceUrl: string;
 }
 
 export interface CompanyListType {

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
 import { useMutation } from "react-query";
 import { MAINURL } from "../../lib/api/common";
@@ -8,6 +9,7 @@ import LoginHeader from "../common/header/LoginHeader";
 import DefaultInput, { DefaultInputType } from "../common/input/default";
 
 const Signup: FC = () => {
+  const router = useRouter();
   const [signupValue, setSignupValue] = useState<{
     name: string;
     email: string;
@@ -20,8 +22,14 @@ const Signup: FC = () => {
     school: "",
   });
 
-  const { mutate: signupMutation } = useMutation("signup", () =>
-    axios.post(`${MAINURL}/auth/signup`, { ...signupValue })
+  const { mutate: signupMutation } = useMutation(
+    "signup",
+    () => axios.post(`${MAINURL}/auth/signup`, { ...signupValue }),
+    {
+      onSuccess: () => {
+        router.push("/login");
+      },
+    }
   );
 
   const setName = (e: React.ChangeEvent<HTMLInputElement>) => {

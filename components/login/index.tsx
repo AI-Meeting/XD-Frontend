@@ -1,10 +1,15 @@
 import styled from "@emotion/styled";
+import axios from "axios";
 import Link from "next/link";
-import React, { FC, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import React, { FC, useState } from "react";
+import { useMutation } from "react-query";
+import { MAINURL } from "../../lib/api/common";
 import LoginHeader from "../common/header/LoginHeader";
 import DefaultInput, { DefaultInputType } from "../common/input/default";
 
 const Login: FC = () => {
+  const router = useRouter();
   const [loginValue, setLoginValue] = useState<{
     email: string;
     password: string;
@@ -12,6 +17,19 @@ const Login: FC = () => {
     email: "",
     password: "",
   });
+
+  const { mutate: loginMutation } = useMutation(
+    "login",
+    () => axios.post(`${MAINURL}/auth/login`, { ...loginValue }),
+    {
+      onSuccess: (data) => {
+        localStorage.setItem("access-token", data.data.token);
+        setTimeout(() => {
+          router.push("/");
+        }, 1000);
+      },
+    }
+  );
 
   const setId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginValue({
@@ -57,7 +75,7 @@ const Login: FC = () => {
             <DefaultInput key={i} {...v} />
           ))}
         </LoginInputContainer>
-        <LoginButton>login</LoginButton>
+        <LoginButton onClick={() => loginMutation()}>login</LoginButton>
         <SignUpDescription>
           아직 계정이 없으신가요?<Link href="/signup"> 간편 가입하기</Link>
         </SignUpDescription>

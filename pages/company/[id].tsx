@@ -20,7 +20,7 @@ const CompanyDetailPage: NextPage = () => {
       <Container>
         <ComapnyDetail companyData={companyData?.data} />
         <QuestionDetail companyData={companyData?.data} />
-        <ControllNavBar />
+        <ControllNavBar companyData={companyData?.data} />
       </Container>
     </>
   );

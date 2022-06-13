@@ -4,7 +4,6 @@ import { blueColor, grayTextColor, mainColor } from "../../../styles/color";
 
 const ProfileBox = () => {
   const { data: user } = useUserInfo();
-  const { data: myInterview } = useMyInterview();
 
   return (
     <ProfileContainer>

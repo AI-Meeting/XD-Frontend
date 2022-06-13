@@ -10,8 +10,7 @@ export default {
   },
   deleteComapny(companyId: number) {
     return request({
-      url: `/company`,
-      data: { id: companyId },
+      url: `/company/${companyId}`,
     });
   },
   postQuestionAnswer(answer: QuestionAnwerType, questionId: number) {

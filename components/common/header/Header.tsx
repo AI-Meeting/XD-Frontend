@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -6,7 +6,7 @@ import ArrowIcon from "../Icon/ArrowIcon";
 import { blueColor, redColor } from "../../../styles/color";
 
 const menuData = [
-  { id: "menu0", name: "면접 후기 등록", path: "/interview" },
+  { id: "menu0", name: "면접 후기 등록", path: "/write/review" },
   { id: "menu1", name: "AI 모의 면접", path: "/interview" },
   { id: "menu2", name: "커뮤니티", path: "/sns" },
 ];
@@ -14,6 +14,7 @@ const menuData = [
 const Header = () => {
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [token, setToken] = useState<string>("");
 
   const routerClickHandle = (path: string) => {
     router.push(`${path}`);
@@ -29,6 +30,10 @@ const Header = () => {
     localStorage.removeItem("access-token");
     localStorage.removeItem("refresh-token");
   };
+
+  useEffect(() => {
+    setToken(localStorage.getItem("access-token"));
+  }, [token]);
 
   return (
     <HeaderContainer>
@@ -61,7 +66,18 @@ const Header = () => {
             >
               내 면접
             </li>
-            <li onClick={openMenuHandle}>로그아웃</li>
+            {token ? (
+              <li onClick={openMenuHandle}>로그아웃</li>
+            ) : (
+              <li
+                onClick={() => {
+                  openMenuHandle();
+                  router.push("/login");
+                }}
+              >
+                로그인
+              </li>
+            )}
           </MoreMenuBox>
         </ProfileContainer>
       </NavMenu>

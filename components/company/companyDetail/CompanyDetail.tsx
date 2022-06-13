@@ -26,12 +26,12 @@ const ComapnyDetail: FC<Props> = ({ companyData }) => {
           <InfoItem>
             <div className="company_info_box">
               <div className="comapny_name">
-                <span>토스</span>
-                <span>IT/금융</span>
+                <span>{companyData?.name}</span>
+                <span>{companyData?.field}</span>
               </div>
-              <span id="location">위치위치위치위치위치</span>
+              <span id="location">{companyData?.location}</span>
             </div>
-            <LevelItem />
+            <LevelItem level={companyData?.level} />
           </InfoItem>
         </InfoWrapper>
       </CompanyInfo>

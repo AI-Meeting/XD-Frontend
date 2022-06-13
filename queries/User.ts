@@ -17,6 +17,12 @@ export const useMyInterview = () =>
     staleTime: Infinity,
   });
 
+export const useMyInterviewReview = () =>
+  useQuery(queryKeys.interviewReview, () => user.getMyInterviewReview(), {
+    cacheTime: Infinity,
+    staleTime: Infinity,
+  });
+
 export const usePostQuestionAnswer = (answer, questionId) => {
   const client = useQueryClient();
 

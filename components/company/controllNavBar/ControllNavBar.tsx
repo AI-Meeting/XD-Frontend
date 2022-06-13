@@ -1,11 +1,15 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { FC } from "react";
+import { CompanyType } from "../../../@types/CompanyType";
 import { mainColor } from "../../../styles/color";
 
-const ControllNavBar: FC = () => {
+type Props = {
+  companyData: CompanyType;
+};
+
+const ControllNavBar: FC<Props> = ({ companyData }) => {
   const router = useRouter();
-  const companyId = 1;
   const questionId = 3;
 
   return (
@@ -15,7 +19,7 @@ const ControllNavBar: FC = () => {
           id="start_btn"
           onClick={() =>
             router.push(
-              `/company/process/${companyId}?questionId=${questionId}`
+              `/company/process/${companyData.id}?questionId=${questionId}`
             )
           }
         >

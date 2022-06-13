@@ -1,19 +1,16 @@
 import styled from "@emotion/styled";
 import { FC } from "react";
 import ReactTextareaAutosize from "react-textarea-autosize";
-import {
-  blueColor,
-  darkGrayTextColor,
-  grayBorderColor,
-} from "../../../../../styles/color";
+import { QuestionAnswerType } from "../../../../../@types/CompanyType";
+import { blueColor, darkGrayTextColor } from "../../../../../styles/color";
 import AnswerDeleteBtn from "./AnswerDeleteBtn";
 import AnswerPatchBtn from "./AnswerPatchBtn";
 
-type Props = {};
+type Props = {
+  answer: QuestionAnswerType;
+};
 
-const AnswerItem: FC<Props> = () => {
-  let content =
-    "지원 동기를 모르겠네요... 그냥 좋은 회사인 것 같아 지원하게 되었습니다. 그리고 제가 배달의 민족을 자주 사용하고 있어서 직접 우아한 형제들에서제가 실사용하는 서비스를 직접 개발하면 어떤 느낄일지 궁금했습니다.";
+const AnswerItem: FC<Props> = ({ answer }) => {
   return (
     <AnswerWrap>
       <p>나의 답변</p>
@@ -21,10 +18,10 @@ const AnswerItem: FC<Props> = () => {
         placeholder="내용을 입력해주세요."
         minRows={3}
         name="box_content"
-        defaultValue={content}
+        defaultValue={answer.answer}
       />
       <BtnWrap>
-        <AnswerDeleteBtn />
+        <AnswerDeleteBtn answerId={answer.id} />
         <AnswerPatchBtn />
       </BtnWrap>
     </AnswerWrap>

@@ -8,8 +8,13 @@ interface Props {
 }
 
 const LocationInputModal: FC<Props> = ({ onCompleteFunction, setIsClose }) => {
+  const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target !== e.currentTarget) return;
+    setIsClose(false);
+  };
+
   return (
-    <Container>
+    <Container onClick={closeModal}>
       <DaumPostcode
         autoClose
         style={{

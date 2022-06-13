@@ -4,9 +4,10 @@ import { CompanyListType } from "../../@types/CompanyType";
 import { optionSelectName } from "../../lib/module/atom/interview";
 import { Container } from "../../pages/interview";
 import { useMyInterview, useMyInterviewReview } from "../../queries/User";
-import { blueColor, grayBackgroundColor } from "../../styles/color";
+import { blueColor, grayBackgroundColor, mainColor } from "../../styles/color";
 import ControlItem from "./interviewBox/ControlItem";
 import InterviewItem from "./interviewBox/InterviewItem";
+import NoInterviewBox from "./NoInterviewBox";
 import ProfileBox from "./profileBox/ProfileBox";
 
 const MyInterview = () => {
@@ -30,7 +31,7 @@ const MyInterview = () => {
     }
   };
 
-  console.log(myInterview?.data, myInterviewReview?.data);
+  console.log(myInterviewReview?.data.length);
 
   return (
     <Container>
@@ -40,9 +41,13 @@ const MyInterview = () => {
           <ControlItem />
           <ContentMent>{selectNameMentHandle()}</ContentMent>
           <ReviewContainer>
-            {selectNameDataHandle()?.map((interview: CompanyListType) => (
-              <InterviewItem key={interview.id} data={interview} />
-            ))}
+            {myInterviewReview?.data.length === 0 ? (
+              <NoInterviewBox />
+            ) : (
+              selectNameDataHandle()?.map((interview: CompanyListType) => (
+                <InterviewItem key={interview.id} data={interview} />
+              ))
+            )}
           </ReviewContainer>
         </ContentContainer>
       </InterviewContainer>
@@ -66,6 +71,7 @@ const ContentContainer = styled.div`
   box-sizing: border-box;
   width: 800px;
   height: auto;
+  min-height: 650px;
   min-height: 500px;
   background: white;
   border-radius: 3px;

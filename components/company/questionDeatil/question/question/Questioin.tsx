@@ -7,21 +7,30 @@ import {
   mainColor,
 } from "../../../../../styles/color";
 import AnswerItem from "../answer/Answer";
+import NoAnswerText from "../answer/NoAnswerText";
 
 type Props = {
   question: QuetionType;
 };
 
 const Question: FC<Props> = ({ question }) => {
+  console.log(question);
+
   return (
     <QuestionWrap>
       <span>
         <strong>Q. </strong>
         {question.question}
       </span>
-      {question?.questionAnswers?.map((answer) => (
-        <AnswerItem key={answer.id} answer={answer} />
-      ))}
+      {question.questionAnswers.length === 0 ? (
+        <NoAnswerText />
+      ) : (
+        <>
+          {question?.questionAnswers?.map((answer) => (
+            <AnswerItem key={answer.id} answer={answer} />
+          ))}
+        </>
+      )}
     </QuestionWrap>
   );
 };

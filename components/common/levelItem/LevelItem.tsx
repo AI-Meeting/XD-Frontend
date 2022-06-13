@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import Image from "next/image";
 import { FC } from "react";
 import { blueColor, mainColor } from "../../../styles/color";
+import StarIcon from "../../../public/assets/icon/starIcon.svg";
 
 type Props = {
   level: number;
@@ -9,6 +9,7 @@ type Props = {
   fontSize: number;
   levelFontSize: number;
   barHeight: number;
+  height: number;
 };
 
 const LevelItem: FC<Props> = ({
@@ -17,11 +18,12 @@ const LevelItem: FC<Props> = ({
   fontSize,
   levelFontSize,
   barHeight,
+  height,
 }) => {
   return (
-    <LevelWrapper width={width}>
+    <LevelWrapper width={width} height={height}>
       <div className="level_num">
-        <img src="./assets/icon/starIcon.svg" alt="난이도 표시" />
+        <StarIcon />
         <span style={{ fontSize: levelFontSize }}>{level}</span>
       </div>
       <LevelText fontSize={fontSize}>
@@ -29,17 +31,17 @@ const LevelItem: FC<Props> = ({
         <span>보통</span>
         <span>어려움</span>
       </LevelText>
-      <LevelBar size={5} height={barHeight}>
+      <LevelBar size={level} height={barHeight}>
         <div className="level_bar"></div>
       </LevelBar>
     </LevelWrapper>
   );
 };
 
-const LevelWrapper = styled.div<{ width: number }>`
+const LevelWrapper = styled.div<{ width: number; height: number }>`
   color: ${blueColor};
   width: ${({ width }) => `${width}px`};
-  height: 60px;
+  height: ${({ height }) => `${height}px`};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,6 +76,7 @@ const LevelBar = styled.div<{ size: number; height: number }>`
   height: ${({ height }) => `${height}px`};
   background: #ececec;
   border-radius: 5px;
+  margin-top: 5px;
 
   .level_bar {
     width: calc((${({ size }) => size}0% * 2));

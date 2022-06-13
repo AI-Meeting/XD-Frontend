@@ -58,7 +58,7 @@ const Header = () => {
             <span>sliverbeen</span>
             <ArrowIcon openMenu={openMenu} />
           </div>
-          <MoreMenuBox onClick={logoutHandle} openMenu={openMenu}>
+          <MoreMenuBox onClick={openMenuHandle} openMenu={openMenu}>
             <li
               onClick={() => {
                 routerClickHandle("interview"), openMenuHandle;
@@ -67,7 +67,7 @@ const Header = () => {
               내 면접
             </li>
             {token ? (
-              <li onClick={openMenuHandle}>로그아웃</li>
+              <li onClick={logoutHandle}>로그아웃</li>
             ) : (
               <li
                 onClick={() => {

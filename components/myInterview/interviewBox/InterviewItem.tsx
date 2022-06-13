@@ -23,7 +23,14 @@ const InterviewItem: FC<Props> = ({ data }) => {
         <span id="question_cnt">질문 {data.questionCnt}개</span>
       </CompanyInfo>
       <LevelInfo>
-        <LevelItem level={data.level} />
+        <LevelItem
+          level={data.level}
+          width={230}
+          height={70}
+          fontSize={14}
+          levelFontSize={16}
+          barHeight={5}
+        />
         <InterviewStateBtn type="진행중" interviewId={data.id} />
       </LevelInfo>
     </ItemBox>

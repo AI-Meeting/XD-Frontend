@@ -1499,6 +1499,189 @@
   "resolved" "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz"
   "version" "0.4.0"
 
+"atob-lite@^1.0.0":
+  "integrity" "sha512-ArXcmHR/vwSN37HLVap/Y5SKpz12CuEybxe1sIYl7th/S6SQPrVMNFt6rblJzCOAxn0SHbXpknUtqbAIeo3Aow=="
+  "resolved" "https://registry.npmjs.org/atob-lite/-/atob-lite-1.0.0.tgz"
+  "version" "1.0.0"
+
+"atob-lite@^2.0.0":
+  "integrity" "sha512-LEeSAWeh2Gfa2FtlQE1shxQ8zi5F9GHarrGKz08TMdODD5T4eH6BMsvtnhbWZ+XQn+Gb6om/917ucvRu7l7ukw=="
+  "resolved" "https://registry.npmjs.org/atob-lite/-/atob-lite-2.0.0.tgz"
+  "version" "2.0.0"
+
+"audio-buffer-from@^1.0.0":
+  "integrity" "sha512-8Wcira24z+26GXDFe7ZFRF1bJm1iWrz8O+XL8iNZxZjxqAPXIoK1IrJiOqStv35ASPbRjG57ZK/T0WO92MDUSg=="
+  "resolved" "https://registry.npmjs.org/audio-buffer-from/-/audio-buffer-from-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "audio-buffer" "^4.0.4"
+    "audio-context" "^1.0.1"
+    "audio-format" "^2.0.0"
+    "is-audio-buffer" "^1.0.11"
+    "is-plain-obj" "^1.1.0"
+    "pcm-convert" "^1.6.0"
+    "pick-by-alias" "^1.2.0"
+    "string-to-arraybuffer" "^1.0.0"
+
+"audio-buffer-list@^2.0.6":
+  "integrity" "sha512-bj4YkkuyY896C64wqEp78QwolqfEwjTtxEKjWHoZAOy1T5DmpMgU7PEndvA0KmcgEWiRoUqdnwyL2wc59vuW2A=="
+  "resolved" "https://registry.npmjs.org/audio-buffer-list/-/audio-buffer-list-2.0.7.tgz"
+  "version" "2.0.7"
+  dependencies:
+    "audio-buffer" "^3.0.0"
+    "audio-buffer-utils" "^4.1.1"
+    "inherits" "^2.0.3"
+    "is-audio-buffer" "^1.0.5"
+    "is-plain-obj" "^1.1.0"
+    "negative-index" "^1.0.2"
+    "object-assign" "^4.1.1"
+
+"audio-buffer-utils@^4.1.1":
+  "integrity" "sha512-4SV84QDCwatJTmsXZjMy9RyBv/vEoLp0BOkeGUX8/D7RS+daA3yCT18pp4J+MV9YUwADUoNXwzhhMnhUYQ8n3A=="
+  "resolved" "https://registry.npmjs.org/audio-buffer-utils/-/audio-buffer-utils-4.3.2.tgz"
+  "version" "4.3.2"
+  dependencies:
+    "audio-buffer" "^3.1.1"
+    "audio-context" "^1.0.0"
+    "clamp" "^1.0.1"
+    "is-audio-buffer" "^1.0.0"
+    "is-browser" "^2.0.1"
+    "negative-index" "^1.0.2"
+    "typedarray-methods" "^1.0.0"
+
+"audio-buffer-utils@^4.3.0":
+  "integrity" "sha512-4SV84QDCwatJTmsXZjMy9RyBv/vEoLp0BOkeGUX8/D7RS+daA3yCT18pp4J+MV9YUwADUoNXwzhhMnhUYQ8n3A=="
+  "resolved" "https://registry.npmjs.org/audio-buffer-utils/-/audio-buffer-utils-4.3.2.tgz"
+  "version" "4.3.2"
+  dependencies:
+    "audio-buffer" "^3.1.1"
+    "audio-context" "^1.0.0"
+    "clamp" "^1.0.1"
+    "is-audio-buffer" "^1.0.0"
+    "is-browser" "^2.0.1"
+    "negative-index" "^1.0.2"
+    "typedarray-methods" "^1.0.0"
+
+"audio-buffer-utils@^5.1.2":
+  "integrity" "sha512-MZEnf8PLnnSwIySffyxG3Q33PwlKHH4r66FZMPUJMDLAtGt8OblzoLcxHInlGZmDqRt1MxYG0Eovn0CpHKsqzg=="
+  "resolved" "https://registry.npmjs.org/audio-buffer-utils/-/audio-buffer-utils-5.1.2.tgz"
+  "version" "5.1.2"
+  dependencies:
+    "audio-buffer" "^4.0.0"
+    "audio-buffer-from" "^1.0.0"
+    "audio-context" "^1.0.0"
+    "clamp" "^1.0.1"
+    "is-audio-buffer" "^1.0.8"
+    "is-browser" "^2.0.1"
+    "is-buffer" "^2.0.0"
+
+"audio-buffer@^2.4.5":
+  "integrity" "sha512-Rb2g11EeVSQHjCPP+2abKPhYj+RoqS6dZF/69DG3N3rb0xRJ86LsR4MwOcBMwXMkiPSnAFAAiR7nilBtIAfnQQ=="
+  "resolved" "https://registry.npmjs.org/audio-buffer/-/audio-buffer-2.4.6.tgz"
+  "version" "2.4.6"
+  dependencies:
+    "audio-context" "latest"
+    "buffer-to-arraybuffer" "latest"
+    "is-audio-buffer" "^1.0.1"
+    "is-browser" "^2.0.1"
+    "is-buffer" "^1.1.0"
+
+"audio-buffer@^3.0.0", "audio-buffer@^3.1.1":
+  "integrity" "sha512-yQNZUatQ5dF7h4BezYLy6T9w4LHahMVXrncFZJjI+N44S3O0lEgZcicsSSdvgNk0gLii58Q4gTvSZyohYqRbfw=="
+  "resolved" "https://registry.npmjs.org/audio-buffer/-/audio-buffer-3.2.1.tgz"
+  "version" "3.2.1"
+  dependencies:
+    "audio-context" "^1.0.0"
+    "buffer-to-arraybuffer" "latest"
+    "is-audio-buffer" "^1.0.1"
+    "is-browser" "^2.0.1"
+    "is-buffer" "^1.1.0"
+    "is-plain-obj" "^1.1.0"
+
+"audio-buffer@^4.0.0", "audio-buffer@^4.0.1", "audio-buffer@^4.0.4":
+  "integrity" "sha512-phH+MR3G+N/PO5ZKKxx7HlU6vJwAJFa0+FCaTjr/4lUZU/RCjUTqlk3nMJTRy5+b+6cbx8m//EtwZOVI5Ht9+w=="
+  "resolved" "https://registry.npmjs.org/audio-buffer/-/audio-buffer-4.0.4.tgz"
+  "version" "4.0.4"
+  dependencies:
+    "audio-context" "^1.0.0"
+
+"audio-context@^1.0.0", "audio-context@^1.0.1", "audio-context@latest":
+  "integrity" "sha512-RH3/rM74f2ITlohhjgC7oYZVS97wtv/SEjXLCzEinnrIPIDxc39m2aFc6wmdkM0NYRKo1DMleYPMAIbnTRW0eA=="
+  "resolved" "https://registry.npmjs.org/audio-context/-/audio-context-1.0.3.tgz"
+  "version" "1.0.3"
+
+"audio-format@^2.0.0", "audio-format@^2.3.2":
+  "integrity" "sha512-5IA2grZhaVhpGxX6lbJm8VVh/SKQULMXXrFxuiodi0zhzDPRB8BJfieo89AclEQv4bDxZRH4lv06qNnxqkFhKQ=="
+  "resolved" "https://registry.npmjs.org/audio-format/-/audio-format-2.3.2.tgz"
+  "version" "2.3.2"
+  dependencies:
+    "is-audio-buffer" "^1.0.11"
+    "is-buffer" "^1.1.5"
+    "is-plain-obj" "^1.1.0"
+    "pick-by-alias" "^1.2.0"
+    "sample-rate" "^2.0.0"
+
+"audio-play@^2.3.1":
+  "integrity" "sha512-TjqdAupN+dm6tGjxRXO7N0EsauKWlGe8+4fHL724ilvzNVJ6WcgblonNktnI4R/ClTaEUijm2sUZrBJz/lSBDw=="
+  "resolved" "https://registry.npmjs.org/audio-play/-/audio-play-2.3.1.tgz"
+  "version" "2.3.1"
+  dependencies:
+    "audio-buffer" "^4.0.1"
+    "audio-buffer-utils" "^5.1.2"
+    "audio-context" "^1.0.1"
+    "audio-source" "^1.0.0"
+    "audio-speaker" "^1.4.0"
+    "is-audio-buffer" "^1.0.11"
+    "negative-index" "^1.0.0"
+
+"audio-sink@^1.0.2":
+  "integrity" "sha512-RoaAZV7WTgAk036LXdWZ5sjqvBZ9yx6cgPbpSUVZxWLO0bKUu+WTG2f/sFuI34FvwlwI8pBP5boHgdezVYV6vg=="
+  "resolved" "https://registry.npmjs.org/audio-sink/-/audio-sink-1.1.6.tgz"
+  "version" "1.1.6"
+  dependencies:
+    "inherits" "^2.0.1"
+    "xtend" "^4.0.1"
+
+"audio-source@^1.0.0":
+  "integrity" "sha512-3OA+3pfedIsPO3cAKs5Prw9I4/J6Ttej27taJcVCFPGZagCoSr60W0SwuW8Np4PJmG52U1cn0syejb6OSXE03A=="
+  "resolved" "https://registry.npmjs.org/audio-source/-/audio-source-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "audio-buffer" "^2.4.5"
+    "audio-through" "^2.1.9"
+    "inherits" "^2.0.1"
+    "is-audio-buffer" "^1.0.1"
+    "pull-stream" "^3.4.5"
+
+"audio-speaker@^1.4.0":
+  "integrity" "sha512-FoTKQGSz9xZPOTAylfMWVKoyKZD3tcjm94AVsngkDrt7ohTVlPCX+lb0KcDD57rI0dPJprFO5GSxEbJUE3Jj+Q=="
+  "resolved" "https://registry.npmjs.org/audio-speaker/-/audio-speaker-1.5.1.tgz"
+  "version" "1.5.1"
+  dependencies:
+    "audio-through" "^2.2.3"
+    "inherits" "^2.0.1"
+    "is-audio-buffer" "^1.0.1"
+    "pcm-util" "^2.1.0"
+    "pull-stream" "^3.4.5"
+    "web-audio-stream" "^3.0.1"
+  optionalDependencies:
+    "audio-sink" "^1.0.2"
+    "speaker" "^0.5.3"
+
+"audio-through@^2.1.9", "audio-through@^2.2.3":
+  "integrity" "sha512-geifBAjr4srD/jl7ZizmKLlSs20tg7dHJnFkCr8NFrVC2QiKQLqVqylH3g4zSWDqu3RyrVsALpAQ66LnyZlBfg=="
+  "resolved" "https://registry.npmjs.org/audio-through/-/audio-through-2.2.3.tgz"
+  "version" "2.2.3"
+  dependencies:
+    "audio-buffer" "^3.1.1"
+    "audio-context" "^1.0.0"
+    "inherits" "^2.0.1"
+    "is-audio-buffer" "^1.0.1"
+    "is-promise" "^2.1.0"
+    "object-assign" "^4.1.1"
+    "pcm-util" "^2.0.1"
+    "performance-now" "^2.1.0"
+
 "axe-core@^4.3.5":
   "integrity" "sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw=="
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.4.1.tgz"
@@ -1612,6 +1795,11 @@
     "node-releases" "^2.0.5"
     "picocolors" "^1.0.0"
 
+"buffer-to-arraybuffer@latest":
+  "integrity" "sha512-i/ndmmCF5QC1D75QCO1EPwYRPIVRVs2yLwkl2bc8R5P1ORHGZZAbTwmYM/vpXt7KzCe+Y57E8YPGTJywgWBNRw=="
+  "resolved" "https://registry.npmjs.org/buffer-to-arraybuffer/-/buffer-to-arraybuffer-0.0.6.tgz"
+  "version" "0.0.6"
+
 "call-bind@^1.0.0", "call-bind@^1.0.2":
   "integrity" "sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA=="
   "resolved" "https://registry.npmjs.org/call-bind/-/call-bind-1.0.2.tgz"
@@ -1656,6 +1844,11 @@
   "integrity" "sha512-YXzt1cQ4a2jqazhcuSWEOc1K2q8g9H6eWNsyZgi640LDzRWVQ2eDe+Y/kVdftH+vYdPF2rgDb3dLdpxE1jvAxw=="
   "resolved" "https://registry.npmjs.org/change-emitter/-/change-emitter-0.1.6.tgz"
   "version" "0.1.6"
+
+"clamp@^1.0.1":
+  "integrity" "sha512-kgMuFyE78OC6Dyu3Dy7vcx4uy97EIbVxJB/B0eJ3bUNAkwdNcxYzgKltnyADiYwsR7SEqkkUPsEUT//OVS6XMA=="
+  "resolved" "https://registry.npmjs.org/clamp/-/clamp-1.0.1.tgz"
+  "version" "1.0.1"
 
 "color-convert@^1.9.0":
   "integrity" "sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg=="
@@ -1802,6 +1995,11 @@
   "integrity" "sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA=="
   "resolved" "https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.8.tgz"
   "version" "1.0.8"
+
+"data-uri-regex@^0.1.2":
+  "integrity" "sha512-QnJ3LVGIitKfO1wZ08l+0cpQUNdEGRDKR0kH2prNvbfBUk0zVn7A6KSTvETGqD2BI1h1CgdqY4X8bEjKu4CdXA=="
+  "resolved" "https://registry.npmjs.org/data-uri-regex/-/data-uri-regex-0.1.4.tgz"
+  "version" "0.1.4"
 
 "debug@^2.6.9":
   "integrity" "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA=="
@@ -2471,7 +2669,7 @@
     "once" "^1.3.0"
     "wrappy" "1"
 
-"inherits@2":
+"inherits@^2.0.1", "inherits@^2.0.3", "inherits@2":
   "integrity" "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ=="
   "resolved" "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz"
   "version" "2.0.4"
@@ -2497,6 +2695,16 @@
   "resolved" "https://registry.npmjs.org/is-arrayish/-/is-arrayish-0.2.1.tgz"
   "version" "0.2.1"
 
+"is-audio-buffer@^1.0.0", "is-audio-buffer@^1.0.1", "is-audio-buffer@^1.0.11", "is-audio-buffer@^1.0.5", "is-audio-buffer@^1.0.8":
+  "integrity" "sha512-fmPC/dizJmP4ITCsW5oTQGMJ9wZVE+A/zAe6FQo3XwgERxmXHmm3ON5XkWDAxmyxvsrDmWx3NArpSgamp/59AA=="
+  "resolved" "https://registry.npmjs.org/is-audio-buffer/-/is-audio-buffer-1.1.0.tgz"
+  "version" "1.1.0"
+
+"is-base64@^0.1.0":
+  "integrity" "sha512-WRRyllsGXJM7ZN7gPTCCQ/6wNPTRDwiWdPK66l5sJzcU/oOzcIcRRf0Rux8bkpox/1yjt0F6VJRsQOIG2qz5sg=="
+  "resolved" "https://registry.npmjs.org/is-base64/-/is-base64-0.1.0.tgz"
+  "version" "0.1.0"
+
 "is-bigint@^1.0.1":
   "integrity" "sha512-zB9CruMamjym81i2JZ3UMn54PKGsQzsJeo6xvN3HJJ4CAsQNB6iRutp2To77OfCNuoxspsIhzaPoO1zyCEhFOg=="
   "resolved" "https://registry.npmjs.org/is-bigint/-/is-bigint-1.0.4.tgz"
@@ -2512,6 +2720,26 @@
     "call-bind" "^1.0.2"
     "has-tostringtag" "^1.0.0"
 
+"is-browser@^2.0.1":
+  "integrity" "sha512-F5rTJxDQ2sW81fcfOR1GnCXT6sVJC104fCyfj+mjpwNEwaPYSn5fte5jiHmBg3DHsIoL/l8Kvw5VN5SsTRcRFQ=="
+  "resolved" "https://registry.npmjs.org/is-browser/-/is-browser-2.1.0.tgz"
+  "version" "2.1.0"
+
+"is-buffer@^1.1.0":
+  "integrity" "sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w=="
+  "resolved" "https://registry.npmjs.org/is-buffer/-/is-buffer-1.1.6.tgz"
+  "version" "1.1.6"
+
+"is-buffer@^1.1.5":
+  "integrity" "sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w=="
+  "resolved" "https://registry.npmjs.org/is-buffer/-/is-buffer-1.1.6.tgz"
+  "version" "1.1.6"
+
+"is-buffer@^2.0.0":
+  "integrity" "sha512-i2R6zNFDwgEHJyQUtJEk0XFi1i0dPFn/oqjK3/vPCcDeJvW5NQ83V8QbicfF1SupOaB0h8ntgBC2YiE7dfyctQ=="
+  "resolved" "https://registry.npmjs.org/is-buffer/-/is-buffer-2.0.5.tgz"
+  "version" "2.0.5"
+
 "is-callable@^1.1.4", "is-callable@^1.2.4":
   "integrity" "sha512-nsuwtxZfMX67Oryl9LCQ+upnC0Z0BgpwntpS89m1H/TLF0zNfzfLMV/9Wa/6MZsj0acpEjAO0KF1xT6ZdLl95w=="
   "resolved" "https://registry.npmjs.org/is-callable/-/is-callable-1.2.4.tgz"
@@ -2523,6 +2751,13 @@
   "version" "2.8.1"
   dependencies:
     "has" "^1.0.3"
+
+"is-data-uri@^0.1.0":
+  "integrity" "sha512-f8UoAIxZ+9xkHv19viLuXOD5PcbasuwT0Syq1socQZkHmNFV0DVIshld0TEjLPHG8t+kTmNHimht5NY3j5Pk5A=="
+  "resolved" "https://registry.npmjs.org/is-data-uri/-/is-data-uri-0.1.0.tgz"
+  "version" "0.1.0"
+  dependencies:
+    "data-uri-regex" "^0.1.2"
 
 "is-date-object@^1.0.1":
   "integrity" "sha512-9YQaSxsAiSwcvS33MBk3wTCVnWK+HhF8VZR2jRxehM16QcVOdHqPn4VPHmRK4lSr38n9JriurInLcP90xsYNfQ=="
@@ -2559,6 +2794,16 @@
   "integrity" "sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng=="
   "resolved" "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz"
   "version" "7.0.0"
+
+"is-plain-obj@^1.1.0":
+  "integrity" "sha512-yvkRyxmFKEOQ4pNXCmJG5AEQNlXJS5LaONXo5/cLdTZdWvsZ1ioJEonLGAosKlMWE8lwUy/bJzMjcw8az73+Fg=="
+  "resolved" "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-1.1.0.tgz"
+  "version" "1.1.0"
+
+"is-promise@^2.1.0":
+  "integrity" "sha512-+lP4/6lKUBfQjZ2pdxThZvLUAafmZb8OAxFb8XXtiQmS35INgr85hdOGoEs124ez1FCnZJt6jau/T+alh58QFQ=="
+  "resolved" "https://registry.npmjs.org/is-promise/-/is-promise-2.2.2.tgz"
+  "version" "2.2.2"
 
 "is-regex@^1.1.4":
   "integrity" "sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg=="
@@ -2828,6 +3073,18 @@
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
 
+"negative-index@^1.0.0", "negative-index@^1.0.2":
+  "integrity" "sha512-SzyzUmUYmerjD9gOEqizFRcDakY+Cf/59rOfqMi4bT212PN6g+jkUOjr/Sx9oOUOxi7qf6dsRwE0PPeRIq4DRw=="
+  "resolved" "https://registry.npmjs.org/negative-index/-/negative-index-1.0.3.tgz"
+  "version" "1.0.3"
+  dependencies:
+    "negative-zero" "^2.0.0"
+
+"negative-zero@^2.0.0":
+  "integrity" "sha512-OZYg1wcBGrFelnZ970V7SN5icAdXJ+KBn0x/AxN1DZEH82qIeFuqyPVS+9FaPtLAoD3GrDl+byffOVcOh+UvKg=="
+  "resolved" "https://registry.npmjs.org/negative-zero/-/negative-zero-2.0.0.tgz"
+  "version" "2.0.0"
+
 "next@>=10.2.0", "next@12.1.0":
   "integrity" "sha512-s885kWvnIlxsUFHq9UGyIyLiuD0G3BUC/xrH0CEnH5lHEWkwQcHOORgbDF0hbrW9vr/7am4ETfX4A7M6DjrE7Q=="
   "resolved" "https://registry.npmjs.org/next/-/next-12.1.0.tgz"
@@ -3016,6 +3273,36 @@
   "resolved" "https://registry.npmjs.org/path-type/-/path-type-4.0.0.tgz"
   "version" "4.0.0"
 
+"pcm-convert@^1.6.0":
+  "integrity" "sha512-5CEspU4j8aEQ80AhNbcLfpT0apc93E6endFxahWd4sV70I6PN7LPdz8GoYm/1qr400K9bUVsVA+KxNgbFROZPw=="
+  "resolved" "https://registry.npmjs.org/pcm-convert/-/pcm-convert-1.6.5.tgz"
+  "version" "1.6.5"
+  dependencies:
+    "audio-format" "^2.3.2"
+    "is-audio-buffer" "^1.0.11"
+    "is-buffer" "^1.1.5"
+    "object-assign" "^4.1.1"
+
+"pcm-util@^2.0.1", "pcm-util@^2.1.0":
+  "integrity" "sha512-gC6DtsnHJgOQ3Xp4ybdLclANWRi0YnL2ojn6HXznoqcL0kM3ZNcyGFIuRH/CKEy65VTGc2ZAL90m/IoqT5mGGQ=="
+  "resolved" "https://registry.npmjs.org/pcm-util/-/pcm-util-2.1.0.tgz"
+  "version" "2.1.0"
+  dependencies:
+    "audio-buffer" "^3.0.0"
+    "is-audio-buffer" "^1.0.1"
+    "is-buffer" "^1.1.0"
+    "to-array-buffer" "^1.0.0"
+
+"performance-now@^2.1.0":
+  "integrity" "sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow=="
+  "resolved" "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz"
+  "version" "2.1.0"
+
+"pick-by-alias@^1.2.0":
+  "integrity" "sha512-ESj2+eBxhGrcA1azgHs7lARG5+5iLakc/6nlfbpjcLl00HuuUOIuORhYXN4D1HfvMSKuVtFQjAlnwi1JHEeDIw=="
+  "resolved" "https://registry.npmjs.org/pick-by-alias/-/pick-by-alias-1.2.0.tgz"
+  "version" "1.2.0"
+
 "picocolors@^1.0.0":
   "integrity" "sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ=="
   "resolved" "https://registry.npmjs.org/picocolors/-/picocolors-1.0.0.tgz"
@@ -3055,6 +3342,11 @@
     "loose-envify" "^1.4.0"
     "object-assign" "^4.1.1"
     "react-is" "^16.13.1"
+
+"pull-stream@^3.4.4", "pull-stream@^3.4.5":
+  "integrity" "sha512-KIqdvpqHHaTUA2mCYcLG1ibEbu/LCKoJZsBWyv9lSYtPkJPBq8m3Hxa103xHi6D2thj5YXa0TqK3L3GUkwgnew=="
+  "resolved" "https://registry.npmjs.org/pull-stream/-/pull-stream-3.6.14.tgz"
+  "version" "3.6.14"
 
 "punycode@^2.1.0":
   "integrity" "sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A=="
@@ -3279,6 +3571,11 @@
   "resolved" "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
   "version" "2.1.2"
 
+"sample-rate@^2.0.0":
+  "integrity" "sha512-AIK0vVBiAEObmpJOxQu/WCyklnWGqzTSDII4O7nBo+SJHmfgBUiYhgV/Y3Ohz76gfSlU6R5CIAKggj+nAOLSvg=="
+  "resolved" "https://registry.npmjs.org/sample-rate/-/sample-rate-2.0.1.tgz"
+  "version" "2.0.1"
+
 "scheduler@^0.20.2":
   "integrity" "sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ=="
   "resolved" "https://registry.npmjs.org/scheduler/-/scheduler-0.20.2.tgz"
@@ -3369,6 +3666,14 @@
   "integrity" "sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w=="
   "resolved" "https://registry.npmjs.org/stable/-/stable-0.1.8.tgz"
   "version" "0.1.8"
+
+"string-to-arraybuffer@^1.0.0":
+  "integrity" "sha512-DaGZidzi93dwjQen5I2osxR9ERS/R7B1PFyufNMnzhj+fmlDQAc1DSDIJVJhgI8Oq221efIMbABUBdPHDRt43Q=="
+  "resolved" "https://registry.npmjs.org/string-to-arraybuffer/-/string-to-arraybuffer-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "atob-lite" "^2.0.0"
+    "is-base64" "^0.1.0"
 
 "string.prototype.matchall@^4.0.6":
   "integrity" "sha512-f48okCX7JiwVi1NXCVWcFnZgADDC/n2vePlQ/KUCNqCikLLilQvwjMO8+BHVKvgzH0JB0J9LEPgxOGT02RoETg=="
@@ -3474,6 +3779,15 @@
   "resolved" "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
   "version" "0.2.0"
 
+"to-array-buffer@^1.0.0":
+  "integrity" "sha512-G/ZsRfvADjo6whwVpnhY0ZVgRs7Vs8f6NJcxYHZA2TpBAX5Fxavy4SyQ3RLqujkHVWDZ6a7jmzGjGkspdvu6Wg=="
+  "resolved" "https://registry.npmjs.org/to-array-buffer/-/to-array-buffer-1.2.4.tgz"
+  "version" "1.2.4"
+  dependencies:
+    "atob-lite" "^1.0.0"
+    "is-audio-buffer" "^1.0.1"
+    "is-data-uri" "^0.1.0"
+
 "to-fast-properties@^2.0.0":
   "integrity" "sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4="
   "resolved" "https://registry.npmjs.org/to-fast-properties/-/to-fast-properties-2.0.0.tgz"
@@ -3519,6 +3833,11 @@
   "integrity" "sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ=="
   "resolved" "https://registry.npmjs.org/type-fest/-/type-fest-0.20.2.tgz"
   "version" "0.20.2"
+
+"typedarray-methods@^1.0.0":
+  "integrity" "sha512-fstWAa225OZ856/4npMqgJP6U1U3vTWnqkn9wokZXzME9pORW9dV8u/v1VRGpo584udKMvCIYlNXzKoIb+UUGg=="
+  "resolved" "https://registry.npmjs.org/typedarray-methods/-/typedarray-methods-1.0.1.tgz"
+  "version" "1.0.1"
 
 "typescript@^4.6.2", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=3.3.1":
   "integrity" "sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg=="
@@ -3614,6 +3933,21 @@
   dependencies:
     "loose-envify" "^1.0.0"
 
+"web-audio-stream@^3.0.1":
+  "integrity" "sha512-doFZu9H4hMtU5mxakGCsoKVyTUaUPYl3L9xoW9Za6hv2r+tHYWa1ZcAOpSUO/7OkFEkLKdt5cHS4db9R9VYRTw=="
+  "resolved" "https://registry.npmjs.org/web-audio-stream/-/web-audio-stream-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "audio-buffer-list" "^2.0.6"
+    "audio-buffer-utils" "^4.3.0"
+    "audio-context" "^1.0.0"
+    "inherits" "^2.0.1"
+    "is-audio-buffer" "^1.0.1"
+    "is-plain-obj" "^1.1.0"
+    "object-assign" "^4.1.1"
+    "pcm-util" "^2.1.0"
+    "pull-stream" "^3.4.4"
+
 "whatwg-fetch@>=0.10.0":
   "integrity" "sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA=="
   "resolved" "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz"
@@ -3646,6 +3980,11 @@
   "integrity" "sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8="
   "resolved" "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz"
   "version" "1.0.2"
+
+"xtend@^4.0.1":
+  "integrity" "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ=="
+  "resolved" "https://registry.npmjs.org/xtend/-/xtend-4.0.2.tgz"
+  "version" "4.0.2"
 
 "yallist@^4.0.0":
   "integrity" "sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A=="

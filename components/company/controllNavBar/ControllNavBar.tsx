@@ -10,7 +10,7 @@ type Props = {
 
 const ControllNavBar: FC<Props> = ({ companyData }) => {
   const router = useRouter();
-  const questionId = 3;
+  const questionId = companyData?.question[0].id;
 
   return (
     <NavBarWrap>

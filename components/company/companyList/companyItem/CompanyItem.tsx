@@ -1,22 +1,33 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 import React, { FC } from "react";
+import { CompanyListType } from "../../../../@types/CompanyType";
 import LevelItem from "../../../common/levelItem/LevelItem";
 
-const CompanyItem: FC = () => {
+const CompanyItem: FC<CompanyListType> = ({
+  name,
+  description,
+  field,
+  job,
+  id,
+  level,
+  location,
+  questionCnt,
+}) => {
   return (
     <Container>
       <header>
-        <Title>토스</Title>
-        <CompanyField>마케팅/IT</CompanyField>
+        <Title>{name}</Title>
+        <CompanyField>{field}</CompanyField>
       </header>
       <CompanyInfo>
         <CompanyInfoDetail>
-          <Location>서울 강남구 역삼동 </Location>
-          <Job>프론트엔드 분야</Job>
+          <Location>{location}</Location>
+          <Job>{job}</Job>
         </CompanyInfoDetail>
         <span>
           <LevelItem
-            level={3.9}
+            level={level}
             width={180}
             fontSize={8}
             levelFontSize={16}
@@ -24,13 +35,12 @@ const CompanyItem: FC = () => {
           />
         </span>
       </CompanyInfo>
-      <Description>
-        생각보다 어려웠는데 뭐 할만 했던 것 같아요~~~ 개발쪽보다는 기초를 많이
-        물어보시더라구요 기초 탄탄하게 쌓고 가시면 나쁘지 않을 것 같아요...
-      </Description>
+      <Description>{description}</Description>
       <Footer>
-        <QuestionCnt>질문 10개</QuestionCnt>
-        <MoveInterViewButton>모의 면접 보러가기</MoveInterViewButton>
+        <QuestionCnt>질문 {questionCnt}개</QuestionCnt>
+        <Link href={`/company/${id}`} passHref>
+          <MoveInterViewButton>모의 면접 보러가기</MoveInterViewButton>
+        </Link>
       </Footer>
     </Container>
   );

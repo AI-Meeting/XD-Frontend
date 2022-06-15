@@ -1,15 +1,17 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useState } from "react";
+import { useCompanyList } from "../../../queries/Company";
 import CompanyItem from "./companyItem/CompanyItem";
 
 const CompanyList = () => {
+  const [searchValue, setSearchValue] = useState<string>("");
+  const { data } = useCompanyList(searchValue);
+
   return (
     <Container>
       <SearchInput placeholder="찾고 싶은 회사를 검색해주세요" />
       <CompanyListContainer>
-        {[...Array(10)].map((v, i) => (
-          <CompanyItem key={i} />
-        ))}
+        {data && data.map((company, i) => <CompanyItem key={i} {...company} />)}
       </CompanyListContainer>
     </Container>
   );

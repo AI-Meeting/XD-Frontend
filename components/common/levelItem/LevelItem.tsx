@@ -29,7 +29,7 @@ const LevelItem: FC<Props> = ({
         <span>보통</span>
         <span>어려움</span>
       </LevelText>
-      <LevelBar size={5} height={barHeight}>
+      <LevelBar size={level} height={barHeight}>
         <div className="level_bar"></div>
       </LevelBar>
     </LevelWrapper>

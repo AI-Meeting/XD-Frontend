@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 import React, { FC } from "react";
 
 const LoginHeader: FC = () => {
   return (
     <>
-      <Logo src={"/assets/icon/logo.svg"} alt="logo" />
+      <Link href="/" passHref>
+        <Logo src={"/assets/icon/logo.svg"} alt="logo" />
+      </Link>
       <Description>
         면접을 쉽고 간편하게,
         <br />
@@ -17,6 +20,7 @@ const LoginHeader: FC = () => {
 const Logo = styled.img`
   width: 30px;
   height: 30px;
+  cursor: pointer;
 `;
 
 const Description = styled.p`

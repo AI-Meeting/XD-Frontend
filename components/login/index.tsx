@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
@@ -26,7 +26,14 @@ const Login: FC = () => {
         localStorage.setItem("access-token", data.data.token);
         setTimeout(() => {
           router.push("/");
-        }, 1000);
+        }, 100);
+      },
+      onError: (error: AxiosError) => {
+        if (error.response.status === 400) {
+          alert("잘못된 인증 정보");
+        } else {
+          alert("잠시 후 다시 시도해주세요.");
+        }
       },
     }
   );
@@ -34,14 +41,14 @@ const Login: FC = () => {
   const setId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginValue({
       ...loginValue,
-      email: e.target.value,
+      email: e.target.value.replace(/\s/g, ""),
     });
   };
 
   const setPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginValue({
       ...loginValue,
-      password: e.target.value,
+      password: e.target.value.replace(/\s/g, ""),
     });
   };
 
@@ -66,6 +73,14 @@ const Login: FC = () => {
     },
   ];
 
+  const login = () => {
+    if (loginValue.email === "" || loginValue.password === "") {
+      alert("이메일과 비밀번호를 입력해주세요.");
+      return;
+    }
+    loginMutation();
+  };
+
   return (
     <LoginContainer>
       <LoginContent>
@@ -75,7 +90,7 @@ const Login: FC = () => {
             <DefaultInput key={i} {...v} />
           ))}
         </LoginInputContainer>
-        <LoginButton onClick={() => loginMutation()}>login</LoginButton>
+        <LoginButton onClick={login}>login</LoginButton>
         <SignUpDescription>
           아직 계정이 없으신가요?<Link href="/signup"> 간편 가입하기</Link>
         </SignUpDescription>

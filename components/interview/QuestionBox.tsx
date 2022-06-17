@@ -5,18 +5,19 @@ import { useSpeechRecognition } from "react-speech-recognition";
 import ReactTextareaAutosize from "react-textarea-autosize";
 import AnimationBox from "./animation/AnimationBox";
 import ControllBtnBar from "./controllBtn/ControllBtnBar";
+import play from "audio-play";
 
-type Props = {};
+type Props = {
+  question: string;
+};
 
-const QuestionBox: FC<Props> = ({}) => {
+const QuestionBox: FC<Props> = ({ question }) => {
   const videoRef = useRef<any>(null);
   const { listening, transcript } = useSpeechRecognition();
 
   useEffect(() => {
-    const test = async () => {
-      let text = `<speak> 그는 그렇게 말했습니다. 
-    <voice name="MAN_DIALOG_BRIGHT">잘 지냈어? 나도 잘 지냈어.</voice> 
-    <voice name="WOMAN_DIALOG_BRIGHT" speechStyle="SS_ALT_FAST_1">금요일이 좋아요.</voice> </speak>`;
+    const audioPlay = async () => {
+      let text = `<speak>${question}</speak>`;
 
       try {
         const { data } = await axios.post(
@@ -30,20 +31,33 @@ const QuestionBox: FC<Props> = ({}) => {
             responseType: "arraybuffer",
           }
         );
+        // 1. AudioContext 생성
+        const audioContext = new window.AudioContext();
+
+        audioContext.decodeAudioData(data).then((res) => {
+          let audio = play(res, {
+            end: res.duration,
+            autoplay: true,
+            volume: 1,
+          });
+
+          audio.play();
+
+          let playback = play(res);
+          playback.pause();
+          playback.play();
+        });
       } catch (e) {
         console.log(e);
       }
     };
 
-    test();
-  }, []);
+    audioPlay();
+  }, [question]);
 
   return (
     <QuestionContainer>
-      <QuestionText>
-        대마고에 지원한 동기가 어떻게 되신가요? 그리고 앞으로의 꿈은 어떤 것
-        인가요?
-      </QuestionText>
+      <QuestionText>{question}</QuestionText>
       <AnimationBox />
       <ReactTextareaAutosize
         minRows={5}

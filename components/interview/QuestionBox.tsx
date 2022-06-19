@@ -6,6 +6,8 @@ import ReactTextareaAutosize from "react-textarea-autosize";
 import AnimationBox from "./animation/AnimationBox";
 import ControllBtnBar from "./controllBtn/ControllBtnBar";
 import play from "audio-play";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { textInterviewAtom } from "../../lib/module/atom/interview";
 
 type Props = {
   question: string;
@@ -14,6 +16,7 @@ type Props = {
 const QuestionBox: FC<Props> = ({ question }) => {
   const videoRef = useRef<any>(null);
   const { listening, transcript } = useSpeechRecognition();
+  const [textInterview, setTextInterview] = useRecoilState(textInterviewAtom);
 
   useEffect(() => {
     const audioPlay = async () => {
@@ -63,6 +66,9 @@ const QuestionBox: FC<Props> = ({ question }) => {
         minRows={5}
         value={transcript}
         placeholder="질문에 대해 음성으로 답변해주시면 XD가 인식하여 변환합니다."
+        onChange={(e) =>
+          setTextInterview({ ...textInterview, answer: e.target.value })
+        }
       />
       <VideoItem ref={videoRef} />
       <ControllBtnBar listening={listening} videoRef={videoRef} />

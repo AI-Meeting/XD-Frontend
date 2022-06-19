@@ -6,6 +6,10 @@ import ArrowBtn from "./controllBtn/ArrowBtn";
 import { backgroundAnimation } from "./animation/animation";
 import QuestionBox from "./QuestionBox";
 import { useCompany } from "../../queries/Question";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { textInterviewAtom } from "../../lib/module/atom/interview";
+import { useMutation } from "react-query";
+import question from "../../lib/api/question/index";
 
 type Props = {};
 
@@ -14,16 +18,31 @@ const QuestionContent: FC<Props> = () => {
   const companyId: number = parseInt(router.query.id as string);
   const questionId: number = parseInt(router.query.questionId as string);
   const [content, setContent] = useState<string>("");
+  const [textInterview, setTextInterview] = useRecoilState(textInterviewAtom);
 
   const { data: companyData } = useCompany(Number(companyId));
 
   const leftBtnClickHandle = () => {
+    interviewMutation();
     router.push(`/company/process/${companyId}?questionId=${questionId - 1}`);
   };
 
   const rightBtnClickHandle = () => {
+    console.log(questionId);
+
+    interviewMutation();
     router.push(`/company/process/${companyId}?questionId=${questionId + 1}`);
   };
+
+  const { mutate: interviewMutation } = useMutation(
+    () => question.postQuestionAnswer(textInterview, questionId),
+    {
+      onSuccess: () => {
+        alert("인터뷰가 저장되었습니다.");
+      },
+      onError: () => {},
+    }
+  );
 
   useEffect(() => {
     setContent(

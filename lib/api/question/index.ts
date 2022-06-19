@@ -17,7 +17,7 @@ export default {
   postQuestionAnswer(answer: QuestionAnwerType, questionId: number) {
     return request({
       method: "post",
-      url: `/question/answer?${questionId}`,
+      url: `/question/answer?questionId=${questionId}`,
       data: answer,
     });
   },

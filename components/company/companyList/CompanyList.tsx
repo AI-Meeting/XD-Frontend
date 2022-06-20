@@ -40,7 +40,8 @@ const SearchInput = styled.input`
   padding: 10px 0px;
   position: relative;
   color: black;
-  background-color: #e3e4e3;
+
+  background-color: #f3f3f3;
   border-radius: 20px;
   background-image: url("/assets/icon/search.svg");
   background-repeat: no-repeat;

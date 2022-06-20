@@ -26,12 +26,19 @@ const ComapnyDetail: FC<Props> = ({ companyData }) => {
           <InfoItem>
             <div className="company_info_box">
               <div className="comapny_name">
-                <span>토스</span>
-                <span>IT/금융</span>
+                <span>{companyData?.name}</span>
+                <span>{companyData?.field}</span>
               </div>
-              <span id="location">위치위치위치위치위치</span>
+              <span id="location">{companyData?.location}</span>
             </div>
-            <LevelItem />
+            <LevelItem
+              level={companyData?.level}
+              width={250}
+              height={80}
+              fontSize={14}
+              levelFontSize={20}
+              barHeight={6}
+            />
           </InfoItem>
         </InfoWrapper>
       </CompanyInfo>
@@ -82,12 +89,12 @@ const InfoItem = styled.div`
     }
 
     .comapny_name {
-      span:nth-child(1) {
+      span:nth-of-type(1) {
         font-weight: 700;
         font-size: 28px;
       }
 
-      span:nth-child(2) {
+      span:nth-of-type(2) {
         margin-left: 15px;
         font-size: 16px;
         color: ${grayTextColor};

@@ -1,14 +1,17 @@
 import styled from "@emotion/styled";
+import { FC } from "react";
+import { CompanyType } from "../../../../../@types/CompanyType";
 import { darkBlueColor } from "../../../../../styles/color";
 
-const Review = () => {
+type Props = {
+  companyData: CompanyType;
+};
+
+const Review: FC<Props> = ({ companyData }) => {
   return (
     <ReviewContainer>
-      <h2>Silverbeen님의 한마디</h2>
-      <span>
-        와 진짜 너어어어ㅓㅇ무 어려워요 ㅠㅠㅠㅠㅠㅠ 여러분 공부 많이 ㅎㅏ세요
-        진짜..... 이미 떨어졌슴다 전...
-      </span>
+      <h2>{companyData?.userName}님의 한마디</h2>
+      <span>{companyData?.description}</span>
     </ReviewContainer>
   );
 };

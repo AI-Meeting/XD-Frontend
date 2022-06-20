@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import { FC } from "react";
 import { CompanyType } from "../../../@types/CompanyType";
-import { Container } from "../../../pages/interview";
-import { grayBackgroundColor } from "../../../styles/color";
 import Question from "./question/question/Questioin";
 import Review from "./question/review/Review";
 
@@ -14,14 +12,12 @@ const QuestionDetail: FC<Props> = ({ companyData }) => {
   return (
     <QuestionContainer>
       <QuestionListBox>
-        <Review />
+        <Review companyData={companyData} />
         <QuestionListWrap>
           <h2>면접 질문</h2>
-          <Question />
-          <Question />
-          <Question />
-          <Question />
-          <Question />
+          {companyData?.question?.map((question, idx) => (
+            <Question key={idx} question={question} />
+          ))}
         </QuestionListWrap>
       </QuestionListBox>
     </QuestionContainer>

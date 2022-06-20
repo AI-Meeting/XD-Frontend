@@ -8,6 +8,7 @@ const queryKeys = {
   deleteQuestionAnswer: "delete_question_answer",
   patchQuestionAnswer: "patch_question_answer",
   companyList: "company_list",
+  companyListMap: "company_list_map",
 } as const;
 
 export default queryKeys;

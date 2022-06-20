@@ -4,12 +4,22 @@ import { useCompanyList } from "../../../queries/Company";
 import CompanyItem from "./companyItem/CompanyItem";
 
 const CompanyList = () => {
+  const [searchInput, setSearchInput] = useState<string>("");
   const [searchValue, setSearchValue] = useState<string>("");
   const { data } = useCompanyList(searchValue);
 
+  const submitSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.keyCode === 13) setSearchValue(searchInput);
+  };
+
   return (
     <Container>
-      <SearchInput placeholder="찾고 싶은 회사를 검색해주세요" />
+      <SearchInput
+        placeholder="찾고 싶은 회사를 검색해주세요"
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
+        onKeyUp={submitSearch}
+      />
       <CompanyListContainer>
         {data && data.map((company, i) => <CompanyItem key={i} {...company} />)}
       </CompanyListContainer>

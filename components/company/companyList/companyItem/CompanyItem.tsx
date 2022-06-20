@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 import React, { FC } from "react";
+import { useRecoilValue } from "recoil";
 import { CompanyListType } from "../../../../@types/CompanyType";
+import { currentCompanyIdAtom } from "../../../../lib/module/atom/company";
 import LevelItem from "../../../common/levelItem/LevelItem";
 
 const CompanyItem: FC<CompanyListType> = ({
@@ -14,8 +16,10 @@ const CompanyItem: FC<CompanyListType> = ({
   location,
   questionCnt,
 }) => {
+  const currentCompanyId = useRecoilValue(currentCompanyIdAtom);
+
   return (
-    <Container>
+    <Container isSelect={currentCompanyId === id}>
       <header>
         <Title>{name}</Title>
         <CompanyField>{field}</CompanyField>
@@ -46,7 +50,9 @@ const CompanyItem: FC<CompanyListType> = ({
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{
+  isSelect: boolean;
+}>`
   width: 100%;
   height: 240px;
   border-radius: 10px;
@@ -54,7 +60,8 @@ const Container = styled.div`
   box-shadow: 0px 2px 8px rgba(126, 126, 126, 0.15);
   box-sizing: border-box;
   margin-top: 30px;
-  border: 1px solid #e3e4e35e;
+  border: ${({ isSelect }) =>
+    isSelect ? "3px solid #7593FF" : "1px solid #E3E4E3"};
   padding: 25px;
 
   &:hover {

@@ -36,3 +36,11 @@ export interface CompanyListType {
   name: string;
   questionCnt: number;
 }
+
+export interface CompanyListMapType {
+  companyId: number;
+  name: string;
+  field: string;
+  level: number;
+  address: number[];
+}

@@ -1,14 +1,19 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
+import { CompanyListType } from "../../@types/CompanyType";
 import { optionSelectName } from "../../lib/module/atom/interview";
 import { Container } from "../../pages/interview";
-import { blueColor, grayBackgroundColor } from "../../styles/color";
+import { useMyInterview, useMyInterviewReview } from "../../queries/User";
+import { blueColor, grayBackgroundColor, mainColor } from "../../styles/color";
 import ControlItem from "./interviewBox/ControlItem";
 import InterviewItem from "./interviewBox/InterviewItem";
+import NoInterviewBox from "./NoInterviewBox";
 import ProfileBox from "./profileBox/ProfileBox";
 
 const MyInterview = () => {
   const selectedName = useRecoilValue(optionSelectName);
+  const { data: myInterview } = useMyInterview();
+  const { data: myInterviewReview } = useMyInterviewReview();
 
   const selectNameMentHandle = () => {
     if (selectedName === "등록한 면접 후기") {
@@ -18,6 +23,16 @@ const MyInterview = () => {
     }
   };
 
+  const selectNameDataHandle = () => {
+    if (selectedName === "등록한 면접 후기") {
+      return myInterviewReview?.data;
+    } else {
+      return myInterview?.data;
+    }
+  };
+
+  console.log(myInterviewReview?.data.length);
+
   return (
     <Container>
       <ProfileBox />
@@ -26,11 +41,13 @@ const MyInterview = () => {
           <ControlItem />
           <ContentMent>{selectNameMentHandle()}</ContentMent>
           <ReviewContainer>
-            <InterviewItem />
-            <InterviewItem />
-            <InterviewItem />
-            <InterviewItem />
-            <InterviewItem />
+            {myInterviewReview?.data.length === 0 ? (
+              <NoInterviewBox />
+            ) : (
+              selectNameDataHandle()?.map((interview: CompanyListType) => (
+                <InterviewItem key={interview.id} data={interview} />
+              ))
+            )}
           </ReviewContainer>
         </ContentContainer>
       </InterviewContainer>
@@ -54,6 +71,7 @@ const ContentContainer = styled.div`
   box-sizing: border-box;
   width: 800px;
   height: auto;
+  min-height: 650px;
   min-height: 500px;
   background: white;
   border-radius: 3px;

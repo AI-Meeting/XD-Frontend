@@ -1,10 +1,15 @@
 import styled from "@emotion/styled";
+import axios, { AxiosError } from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
+import { useMutation } from "react-query";
+import { MAINURL } from "../../lib/api/common";
 import LoginHeader from "../common/header/LoginHeader";
 import DefaultInput, { DefaultInputType } from "../common/input/default";
 
 const Signup: FC = () => {
+  const router = useRouter();
   const [signupValue, setSignupValue] = useState<{
     name: string;
     email: string;
@@ -17,31 +22,48 @@ const Signup: FC = () => {
     school: "",
   });
 
+  const { mutate: signupMutation } = useMutation(
+    "signup",
+    () => axios.post(`${MAINURL}/auth/signup`, { ...signupValue }),
+    {
+      onSuccess: () => {
+        router.push("/login");
+      },
+      onError: (error: AxiosError) => {
+        if (error.response.status === 409) {
+          alert("이미 존재하는 이메일입니다.");
+        } else {
+          alert("잠시 후 다시 시도하세요.");
+        }
+      },
+    }
+  );
+
   const setName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSignupValue({
       ...signupValue,
-      name: e.target.value,
+      name: e.target.value.replace(/\s/g, ""),
     });
   };
 
   const setEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSignupValue({
       ...signupValue,
-      email: e.target.value,
+      email: e.target.value.replace(/\s/g, ""),
     });
   };
 
   const setPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSignupValue({
       ...signupValue,
-      password: e.target.value,
+      password: e.target.value.replace(/\s/g, ""),
     });
   };
 
   const setSchool = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSignupValue({
       ...signupValue,
-      school: e.target.value,
+      school: e.target.value.replace(/\s/g, ""),
     });
   };
 
@@ -84,6 +106,16 @@ const Signup: FC = () => {
     },
   ];
 
+  const signUp = () => {
+    for (const signupInputValue in signupValue) {
+      if (signupValue[signupInputValue] === "") {
+        alert("빈칸 없이 모두 입력해주세요.");
+        return;
+      }
+    }
+    signupMutation();
+  };
+
   return (
     <SignupContainer>
       <SignupContent>
@@ -93,7 +125,7 @@ const Signup: FC = () => {
             <DefaultInput key={i} {...v} />
           ))}
         </SignupInputContainer>
-        <SignupButton>Sign Up</SignupButton>
+        <SignupButton onClick={signUp}>Sign Up</SignupButton>
         <LoginDescription>
           이미 계정이 없으신가요?<Link href="/login"> 로그인하기</Link>
         </LoginDescription>

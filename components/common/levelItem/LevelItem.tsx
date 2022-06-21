@@ -31,7 +31,7 @@ const LevelItem: FC<Props> = ({
         <span>보통</span>
         <span>어려움</span>
       </LevelText>
-      <LevelBar size={level} height={barHeight}>
+      <LevelBar size={(level / 5) * 100} height={barHeight}>
         <div className="level_bar"></div>
       </LevelBar>
     </LevelWrapper>
@@ -79,7 +79,7 @@ const LevelBar = styled.div<{ size: number; height: number }>`
   margin-top: 5px;
 
   .level_bar {
-    width: calc((${({ size }) => size}0% * 2));
+    width: ${({ size }) => `${size}%`};
     height: 100%;
     background: ${mainColor};
     border-radius: 5px;

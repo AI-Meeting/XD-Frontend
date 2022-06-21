@@ -9,6 +9,7 @@ export type DefaultInputType = {
   value: string;
   onChangeFunction: (e: React.ChangeEvent<HTMLInputElement>) => void;
   margin: string;
+  placeHolder?: string;
 };
 
 const DefaultInput: FC<DefaultInputType> = ({
@@ -19,12 +20,13 @@ const DefaultInput: FC<DefaultInputType> = ({
   value,
   onChangeFunction,
   margin,
+  placeHolder,
 }) => {
   return (
     <InputContainer width={width} margin={margin}>
       <Title fontSize={titleFontSize}>{title}</Title>
       <Input
-        placeholder={`${title}을(를) 입력해주세요.`}
+        placeholder={placeHolder ? placeHolder : `${title}을(를) 입력해주세요.`}
         fontSize={inputFontSize}
         value={value}
         onChange={onChangeFunction}

@@ -79,7 +79,7 @@ const LevelBar = styled.div<{ size: number; height: number }>`
   margin-top: 5px;
 
   .level_bar {
-    width: calc((${({ size }) => size}0% * 2));
+    width: ${({ size }) => `${size}%`};
     height: 100%;
     background: ${mainColor};
     border-radius: 5px;

@@ -15,8 +15,6 @@ type Props = {
 };
 
 const Question: FC<Props> = ({ question }) => {
-  console.log(question);
-
   return (
     <QuestionWrap>
       <span>
@@ -34,8 +32,8 @@ const Question: FC<Props> = ({ question }) => {
               <>
                 <ReactPlayer
                   url={`${answer.videoUrl.split("?")[0]}`} // 플레이어 url
-                  width="800px" // 플레이어 크기 (가로)
-                  height="500px" // 플레이어 크기 (세로)
+                  width="1000px" // 플레이어 크기 (가로)
+                  height="700px" // 플레이어 크기 (세로)
                   playing={true} // 자동 재생 on
                   muted={true} // 자동 재생 on
                   controls={true} // 플레이어 컨트롤 노출 여부

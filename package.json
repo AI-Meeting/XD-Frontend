@@ -24,6 +24,7 @@
     "react-query": "^3.38.0",
     "react-speech-recognition": "^3.9.0",
     "react-textarea-autosize": "^8.3.3",
+    "react-toastify": "^9.0.5",
     "react-video-recorder": "^3.19.3",
     "recoil": "^0.7.2",
     "regenerator-runtime": "^0.13.9"

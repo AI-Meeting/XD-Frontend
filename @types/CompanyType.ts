@@ -25,3 +25,14 @@ export interface QuestionAnswerType {
   videoUrl: string;
   voiceUrl: string;
 }
+
+export interface CompanyListType {
+  description: string;
+  field: string;
+  id: number;
+  job: string;
+  level: number;
+  location: string;
+  name: string;
+  questionCnt: number;
+}

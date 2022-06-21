@@ -14,6 +14,7 @@ const ProfileBox = () => {
             <span>{user?.data.name}</span>
             <span>학생</span>
           </div>
+          <span>{user?.data.email}</span>
           <span>{user?.data.school}</span>
         </MyInfoBox>
       </div>
@@ -22,6 +23,7 @@ const ProfileBox = () => {
 };
 
 const ProfileContainer = styled.section`
+  margin-top: 60px;
   width: 100%;
   height: 250px;
   background: white;
@@ -30,7 +32,7 @@ const ProfileContainer = styled.section`
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: ${mainColor};
+    background: linear-gradient(128.57deg, #514ef6 16.67%, #8d92f2 81.48%);
   }
 
   .wrapper {

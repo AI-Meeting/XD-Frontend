@@ -13,5 +13,5 @@ export const stopModalAtom = atom<boolean>({
 
 export const textInterviewAtom = atom<QuestionAnwerType>({
   key: "textInterviewAtom",
-  default: { answer: null, voiceUrl: null, videoUrl: null },
+  default: { answer: "안녕!!", voiceUrl: null, videoUrl: null },
 });

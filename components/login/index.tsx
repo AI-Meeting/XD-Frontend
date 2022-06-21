@@ -3,12 +3,14 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
-import { useMutation } from "react-query";
+import { QueryClient, useMutation } from "react-query";
 import { MAINURL } from "../../lib/api/common";
 import LoginHeader from "../common/header/LoginHeader";
 import DefaultInput, { DefaultInputType } from "../common/input/default";
+import { toast } from "react-toastify";
 
 const Login: FC = () => {
+  const queryClient = new QueryClient();
   const router = useRouter();
   const [loginValue, setLoginValue] = useState<{
     email: string;
@@ -24,9 +26,15 @@ const Login: FC = () => {
     {
       onSuccess: (data) => {
         localStorage.setItem("access-token", data.data.token);
+        queryClient.invalidateQueries("userInfo");
+        toast.success("로그인에 성공하셨습니다.");
+
         setTimeout(() => {
           router.push("/");
         }, 1000);
+      },
+      onError: () => {
+        toast.error("아이디 혹은 비밀번호를 확인해주세요.");
       },
     }
   );

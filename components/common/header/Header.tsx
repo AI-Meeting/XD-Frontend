@@ -6,7 +6,7 @@ import ArrowIcon from "../Icon/ArrowIcon";
 import { blueColor, redColor } from "../../../styles/color";
 
 const menuData = [
-  { id: "menu0", name: "면접 후기 등록", path: "/interview" },
+  { id: "menu0", name: "면접 후기 등록", path: "/write/review" },
   { id: "menu1", name: "AI 모의 면접", path: "/interview" },
   { id: "menu2", name: "커뮤니티", path: "/sns" },
 ];

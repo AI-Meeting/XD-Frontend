@@ -3,6 +3,7 @@ import React, { FC, useState } from "react";
 import { CompanyReviewType } from "../../../@types/CompanyReviewType";
 import DefaultInput from "../../common/input/default";
 import LocationInputModal from "../../common/modal/LocationInputModal";
+import InterviewQuestion from "./interviewQuestion/InterviewQuestion";
 
 const JOB_OPTIONS = [
   "프론트엔드",
@@ -15,17 +16,14 @@ const JOB_OPTIONS = [
   "기타",
 ];
 
-const FormBox: FC = () => {
-  const [companyReviewValue, setCompanyReviewValue] =
-    useState<CompanyReviewType>({
-      name: "",
-      location: "",
-      field: "",
-      job: "",
-      level: 0,
-      description: "",
-      question: [],
-    });
+interface Props {
+  setCompanyReviewValue: React.Dispatch<
+    React.SetStateAction<CompanyReviewType>
+  >;
+  companyReviewValue: CompanyReviewType;
+}
+
+const FormBox: FC<Props> = ({ companyReviewValue, setCompanyReviewValue }) => {
   const [isLocation, setIsLocation] = useState<boolean>(false);
 
   const setCompanyName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +45,20 @@ const FormBox: FC = () => {
     setCompanyReviewValue({
       ...companyReviewValue,
       field: e.target.value,
+    });
+  };
+
+  const setCompanyLevel = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyReviewValue({
+      ...companyReviewValue,
+      level: Number(e.target.value),
+    });
+  };
+
+  const setCompanyDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyReviewValue({
+      ...companyReviewValue,
+      description: e.target.value,
     });
   };
 
@@ -88,7 +100,15 @@ const FormBox: FC = () => {
         />
         <JobSelectContainer>
           <p>면접분야</p>
-          <JobSelect>
+          <JobSelect
+            onChange={(e) =>
+              setCompanyReviewValue({
+                ...companyReviewValue,
+                job: e.target.value,
+              })
+            }
+            value={companyReviewValue.job}
+          >
             {JOB_OPTIONS.map((v, i) => (
               <option value={v} key={i}>
                 {v}
@@ -99,7 +119,41 @@ const FormBox: FC = () => {
       </FieldInputContainer>
       <LevelContainer>
         <h3>면접 난이도</h3>
+        <LevelInput>
+          <LevelContent>
+            <img src="/assets/icon/starIcon.svg" alt="star" />
+            <span>{companyReviewValue.level}</span>
+          </LevelContent>
+          <LevelDifficulty>
+            <span>쉬움</span>
+            <span>보통</span>
+            <span>어려움</span>
+          </LevelDifficulty>
+          <input
+            type={"range"}
+            max={5}
+            min={0}
+            step={0.1}
+            value={companyReviewValue.level}
+            onChange={setCompanyLevel}
+          />
+        </LevelInput>
       </LevelContainer>
+      <InterviewQuestion
+        question={companyReviewValue.question}
+        companyReviewValue={companyReviewValue}
+        setCompanyReviewValue={setCompanyReviewValue}
+      />
+      <DefaultInput
+        width={350}
+        inputFontSize={14}
+        title="면접 후기"
+        titleFontSize={16}
+        value={companyReviewValue.description}
+        onChangeFunction={setCompanyDescription}
+        margin="20px 0px 0px 0px"
+        placeHolder="면접 후기를 한마디로 입력해주세요."
+      />
     </Container>
   );
 };
@@ -173,6 +227,59 @@ const LevelContainer = styled.div`
   }
 `;
 
-const LevelInputContainer = styled.div``;
+const LevelDifficulty = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+
+  & span {
+    font-size: 14px;
+    color: #6f828c;
+  }
+`;
+
+const LevelInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 270px;
+
+  & input {
+    width: 100%;
+    height: 8px;
+    color: #514ef6;
+    background-color: #ececec;
+    border: none;
+    outline: none;
+
+    &::-webkit-slider-thumb {
+      opacity: 0;
+    }
+
+    &:focus {
+      color: #514ef6;
+      border: none;
+      outline: none;
+    }
+  }
+`;
+
+const LevelContent = styled.div`
+  display: flex;
+  align-items: center;
+
+  & img {
+    width: 20px;
+    height: 20px;
+  }
+
+  & span {
+    margin-left: 10px;
+    color: #6f828c;
+    font-size: 18px;
+  }
+`;
 
 export default FormBox;

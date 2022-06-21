@@ -1,22 +1,37 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 import React, { FC } from "react";
+import { useRecoilValue } from "recoil";
+import { CompanyListType } from "../../../../@types/CompanyType";
+import { currentCompanyIdAtom } from "../../../../lib/module/atom/company";
 import LevelItem from "../../../common/levelItem/LevelItem";
 
-const CompanyItem: FC = () => {
+const CompanyItem: FC<CompanyListType> = ({
+  name,
+  description,
+  field,
+  job,
+  id,
+  level,
+  location,
+  questionCnt,
+}) => {
+  const currentCompanyId = useRecoilValue(currentCompanyIdAtom);
+
   return (
-    <Container>
+    <Container isSelect={currentCompanyId === id}>
       <header>
-        <Title>토스</Title>
-        <CompanyField>마케팅/IT</CompanyField>
+        <Title>{name}</Title>
+        <CompanyField>{field}</CompanyField>
       </header>
       <CompanyInfo>
         <CompanyInfoDetail>
-          <Location>서울 강남구 역삼동 </Location>
-          <Job>프론트엔드 분야</Job>
+          <Location>{location}</Location>
+          <Job>{job}</Job>
         </CompanyInfoDetail>
         <span>
           <LevelItem
-            level={3.9}
+            level={level}
             width={180}
             fontSize={8}
             levelFontSize={16}
@@ -24,19 +39,20 @@ const CompanyItem: FC = () => {
           />
         </span>
       </CompanyInfo>
-      <Description>
-        생각보다 어려웠는데 뭐 할만 했던 것 같아요~~~ 개발쪽보다는 기초를 많이
-        물어보시더라구요 기초 탄탄하게 쌓고 가시면 나쁘지 않을 것 같아요...
-      </Description>
+      <Description>{description}</Description>
       <Footer>
-        <QuestionCnt>질문 10개</QuestionCnt>
-        <MoveInterViewButton>모의 면접 보러가기</MoveInterViewButton>
+        <QuestionCnt>질문 {questionCnt}개</QuestionCnt>
+        <Link href={`/company/${id}`} passHref>
+          <MoveInterViewButton>모의 면접 보러가기</MoveInterViewButton>
+        </Link>
       </Footer>
     </Container>
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{
+  isSelect: boolean;
+}>`
   width: 100%;
   height: 240px;
   border-radius: 10px;
@@ -44,7 +60,8 @@ const Container = styled.div`
   box-shadow: 0px 2px 8px rgba(126, 126, 126, 0.15);
   box-sizing: border-box;
   margin-top: 30px;
-  border: 1px solid #e3e4e35e;
+  border: ${({ isSelect }) =>
+    isSelect ? "3px solid #7593FF" : "1px solid #E3E4E3"};
   padding: 25px;
 
   &:hover {

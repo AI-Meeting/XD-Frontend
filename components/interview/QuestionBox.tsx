@@ -6,8 +6,9 @@ import ReactTextareaAutosize from "react-textarea-autosize";
 import AnimationBox from "./animation/AnimationBox";
 import ControllBtnBar from "./controllBtn/ControllBtnBar";
 import play from "audio-play";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { textInterviewAtom } from "../../lib/module/atom/interview";
+import VideoRecorder from "react-video-recorder";
 
 type Props = {
   question: string;
@@ -71,6 +72,32 @@ const QuestionBox: FC<Props> = ({ question }) => {
         }
       />
       <VideoItem ref={videoRef} />
+      <VideoRecorder
+        isFlipped={false}
+        countdownTime={0}
+        mimeType="video/webm;codecs=vp8,opus"
+        constraints={{
+          //  audio: true,
+          video: {
+            width: { exact: 480, ideal: 480 },
+            height: { exact: 640, ideal: 640 },
+            aspectRatio: { exact: 0.7500000001, ideal: 0.7500000001 },
+            resizeMode: "crop-and-scale",
+          },
+        }}
+        onRecordingComplete={(videoBlob) => {
+          const audiofile = new File([videoBlob], "video");
+
+          console.log(videoBlob, audiofile);
+
+          setTextInterview({
+            ...textInterview,
+            videoUrl: audiofile,
+            voiceUrl: audiofile,
+          });
+        }}
+      />
+
       <ControllBtnBar listening={listening} videoRef={videoRef} />
     </QuestionContainer>
   );

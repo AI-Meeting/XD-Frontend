@@ -44,6 +44,13 @@ const WriteReview: FC = () => {
     }
   }, [isSuccess, isError]);
 
+  useEffect(() => {
+    if (!localStorage.getItem("access_token")) {
+      alert("로그인 후 이용해주세요.");
+      router.push("/login");
+    }
+  }, []);
+
   return (
     <>
       <SaveButton

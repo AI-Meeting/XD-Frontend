@@ -1,9 +1,28 @@
 import styled from "@emotion/styled";
 import { FC } from "react";
+import { useMutation, useQueryClient } from "react-query";
+import queryKeys from "../../../../../contexts/QueryKey";
+import question from "../../../../../lib/api/question";
 import { mainColor } from "../../../../../styles/color";
 
-const AnswerDeleteBtn: FC = () => {
-  return <DeleteBtn>답변 삭제</DeleteBtn>;
+type Props = {
+  answerId: number;
+};
+
+const AnswerDeleteBtn: FC<Props> = ({ answerId }) => {
+  const client = useQueryClient();
+
+  const { mutate: deleteAnswerMutate } = useMutation(
+    queryKeys.deleteQuestionAnswer,
+    () => question.deleteQuestionAnswer(answerId),
+    {
+      onSuccess: () => {
+        client.invalidateQueries(queryKeys.company);
+      },
+      onError: () => {},
+    }
+  );
+  return <DeleteBtn onClick={() => deleteAnswerMutate()}>답변 삭제</DeleteBtn>;
 };
 
 const DeleteBtn = styled.button`

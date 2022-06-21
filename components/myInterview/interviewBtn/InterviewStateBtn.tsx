@@ -1,7 +1,12 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import React from "react";
-import { redColor } from "../../../styles/color";
+import {
+  blueColor,
+  mainColor,
+  redColor,
+  subMainColor,
+} from "../../../styles/color";
 
 type Props = {
   type: string;
@@ -24,10 +29,17 @@ const InterviewStateBtn = ({ type, interviewId }: Props) => {
 const StateBtnBox = styled.button`
   width: 150px;
   height: 30px;
-  background: ${redColor};
+  background: ${subMainColor};
   color: white;
   border-radius: 5px;
   font-size: 12px;
+  cursor: pointer;
+
+  :hover {
+    box-shadow: 0px 2px 9px #cdcdcd;
+    transition: all 0.7s;
+    background: ${mainColor};
+  }
 `;
 
 export default InterviewStateBtn;

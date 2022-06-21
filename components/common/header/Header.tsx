@@ -1,19 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import ArrowIcon from "../Icon/ArrowIcon";
 import { blueColor, redColor } from "../../../styles/color";
+import Link from "next/link";
+import { useUserInfo } from "../../../queries/Company";
 
 const menuData = [
-  { id: "menu0", name: "면접 후기 등록", path: "/interview" },
+  { id: "menu0", name: "면접 후기 등록", path: "/write/review" },
   { id: "menu1", name: "AI 모의 면접", path: "/interview" },
-  { id: "menu2", name: "커뮤니티", path: "/sns" },
 ];
 
 const Header = () => {
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [token, setToken] = useState<string>("");
+
+  const { data: user } = useUserInfo();
 
   const routerClickHandle = (path: string) => {
     router.push(`${path}`);
@@ -30,9 +34,19 @@ const Header = () => {
     localStorage.removeItem("refresh-token");
   };
 
+  useEffect(() => {
+    setToken(localStorage.getItem("access-token"));
+  }, [token]);
+
   return (
     <HeaderContainer>
-      <Image src="/assets/icon/pinIcon.svg" width={30} height={30} alt="로고" />
+      <Image
+        src="/assets/icon/logo.svg"
+        width={30}
+        height={30}
+        alt="로고"
+        onClick={() => router.push("/")}
+      />
       <NavMenu>
         {menuData.map((menu) => (
           <li key={menu.id}>
@@ -50,10 +64,10 @@ const Header = () => {
         <ProfileContainer>
           <div className="profile_box" onClick={openMenuHandle}>
             <div className="profile_circle" />
-            <span>sliverbeen</span>
+            <span>{user?.data?.name}</span>
             <ArrowIcon openMenu={openMenu} />
           </div>
-          <MoreMenuBox onClick={logoutHandle} openMenu={openMenu}>
+          <MoreMenuBox onClick={openMenuHandle} openMenu={openMenu}>
             <li
               onClick={() => {
                 routerClickHandle("interview"), openMenuHandle;
@@ -61,7 +75,18 @@ const Header = () => {
             >
               내 면접
             </li>
-            <li onClick={openMenuHandle}>로그아웃</li>
+            {token ? (
+              <li onClick={logoutHandle}>로그아웃</li>
+            ) : (
+              <li
+                onClick={() => {
+                  openMenuHandle();
+                  router.push("/login");
+                }}
+              >
+                로그인
+              </li>
+            )}
           </MoreMenuBox>
         </ProfileContainer>
       </NavMenu>
@@ -70,6 +95,8 @@ const Header = () => {
 };
 
 const HeaderContainer = styled.header`
+  z-index: 10;
+  position: fixed;
   width: 100%;
   height: 60px;
   margin: 0 auto;
@@ -137,6 +164,7 @@ const MoreMenuBox = styled.div<{ openMenu: boolean }>`
   justify-content: center;
   flex-direction: column;
   opacity: ${({ openMenu }) => (openMenu ? 1 : 0)};
+  z-index: ${({ openMenu }) => (openMenu ? 6 : -1)};
   transition: all 0.2s;
   position: relative;
   top: 16px;

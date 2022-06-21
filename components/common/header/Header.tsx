@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import ArrowIcon from "../Icon/ArrowIcon";
 import { blueColor, redColor } from "../../../styles/color";
 import Link from "next/link";
-import { useUserInfo } from "../../../queries/Company";
+import { useUserInfo } from "../../../queries/User";
 
 const menuData = [
   { id: "menu0", name: "면접 후기 등록", path: "/write/review" },
@@ -30,8 +30,8 @@ const Header = () => {
   const logoutHandle = () => {
     openMenuHandle();
 
-    localStorage.removeItem("access-token");
-    localStorage.removeItem("refresh-token");
+    localStorage.removeItem("access_token");
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -61,34 +61,27 @@ const Header = () => {
           </li>
         ))}
 
-        <ProfileContainer>
-          <div className="profile_box" onClick={openMenuHandle}>
-            <div className="profile_circle" />
-            <span>{user?.data?.name}</span>
-            <ArrowIcon openMenu={openMenu} />
-          </div>
-          <MoreMenuBox onClick={openMenuHandle} openMenu={openMenu}>
-            <li
-              onClick={() => {
-                routerClickHandle("interview"), openMenuHandle;
-              }}
-            >
-              내 면접
-            </li>
-            {token ? (
-              <li onClick={logoutHandle}>로그아웃</li>
-            ) : (
+        {user ? (
+          <ProfileContainer>
+            <div className="profile_box" onClick={openMenuHandle}>
+              <div className="profile_circle" />
+              <span>{user?.data?.name}</span>
+              <ArrowIcon openMenu={openMenu} />
+            </div>
+            <MoreMenuBox onClick={openMenuHandle} openMenu={openMenu}>
               <li
                 onClick={() => {
-                  openMenuHandle();
-                  router.push("/login");
+                  routerClickHandle("interview"), openMenuHandle;
                 }}
               >
-                로그인
+                내 면접
               </li>
-            )}
-          </MoreMenuBox>
-        </ProfileContainer>
+              <li onClick={logoutHandle}>로그아웃</li>
+            </MoreMenuBox>
+          </ProfileContainer>
+        ) : (
+          <LoginText onClick={() => router.push("/login")}>로그인</LoginText>
+        )}
       </NavMenu>
     </HeaderContainer>
   );
@@ -176,6 +169,14 @@ const MoreMenuBox = styled.div<{ openMenu: boolean }>`
     color: ${redColor};
     font-size: 14px;
   }
+`;
+
+const LoginText = styled.span`
+  font-size: 14px;
+  color: #6f828c;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 `;
 
 export default Header;

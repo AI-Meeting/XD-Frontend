@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
-import axios from "axios";
 import { useRouter } from "next/router";
 import React, { FC, useEffect, useState } from "react";
-import { useMutation } from "react-query";
 import { CompanyReviewType } from "../../@types/CompanyReviewType";
 import { useWriteReviewMutate } from "../../queries/Company";
 import FormBox from "./formBox/FormBox";

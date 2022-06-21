@@ -35,13 +35,10 @@ const Login: FC = () => {
       },
       onError: (error: AxiosError) => {
         if (error.response.status === 400) {
-          alert("잘못된 인증 정보");
+          toast.error("아이디 혹은 비밀번호를 확인해주세요.");
         } else {
-          alert("잠시 후 다시 시도해주세요.");
+          toast.error("잠시 후 다시 시도해주세요.");
         }
-      },
-      onError: () => {
-        toast.error("아이디 혹은 비밀번호를 확인해주세요.");
       },
     }
   );

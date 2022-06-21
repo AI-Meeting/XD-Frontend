@@ -4,11 +4,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import ArrowIcon from "../Icon/ArrowIcon";
 import { blueColor, redColor } from "../../../styles/color";
+import Link from "next/link";
 
 const menuData = [
   { id: "menu0", name: "면접 후기 등록", path: "/write/review" },
   { id: "menu1", name: "AI 모의 면접", path: "/interview" },
-  { id: "menu2", name: "커뮤니티", path: "/sns" },
 ];
 
 const Header = () => {
@@ -37,7 +37,13 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <Image src="/assets/icon/pinIcon.svg" width={30} height={30} alt="로고" />
+      <Image
+        src="/assets/icon/logo.svg"
+        width={30}
+        height={30}
+        alt="로고"
+        onClick={() => router.push("/")}
+      />
       <NavMenu>
         {menuData.map((menu) => (
           <li key={menu.id}>

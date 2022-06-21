@@ -111,6 +111,7 @@ const NaverMap: FC = () => {
 const NaverMapContainer = styled.div`
   width: 95%;
   height: 95%;
+  z-index: -1;
 `;
 
 export default NaverMap;

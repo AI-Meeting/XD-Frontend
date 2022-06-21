@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useMyInterview, useUserInfo } from "../../../queries/User";
-import { blueColor, grayTextColor, mainColor } from "../../../styles/color";
+import { blueColor, grayTextColor } from "../../../styles/color";
 
 const ProfileBox = () => {
   const { data: user } = useUserInfo();

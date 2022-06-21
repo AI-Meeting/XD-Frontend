@@ -31,7 +31,7 @@ export default {
     try {
       return axios({
         method: "post",
-        url: `http://localhost:3000/question/answer?questionId=${questionId}`,
+        url: `http://3.39.18.1:3000/question/answer?questionId=${questionId}`,
         headers: {
           // Accept: "*/*",
           // type: "formData",

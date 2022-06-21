@@ -26,12 +26,12 @@ const Question: FC<Props> = ({ question }) => {
       ) : (
         <>
           {question?.questionAnswers?.map((answer) => {
-            console.log(answer.videoUrl.split("?")[0]);
+            console.log(answer.videoUrl?.split("?")[0]);
 
             return (
               <>
                 <ReactPlayer
-                  url={`${answer.videoUrl.split("?")[0]}`} // 플레이어 url
+                  url={`${answer.videoUrl?.split("?")[0]}`} // 플레이어 url
                   width="1000px" // 플레이어 크기 (가로)
                   height="700px" // 플레이어 크기 (세로)
                   playing={true} // 자동 재생 on

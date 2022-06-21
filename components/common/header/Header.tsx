@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import ArrowIcon from "../Icon/ArrowIcon";
 import { blueColor, redColor } from "../../../styles/color";
 import Link from "next/link";
-import { useUserInfo } from "../../../queries/Company";
+import { useUserInfo } from "../../../queries/User";
 
 const menuData = [
   { id: "menu0", name: "면접 후기 등록", path: "/write/review" },

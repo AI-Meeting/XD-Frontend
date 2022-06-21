@@ -1,7 +1,6 @@
 import axios, { AxiosError } from "axios";
 
 export const MAINURL = process.env.NEXT_PUBLIC_API_URL;
-//export const token = localStorage.getItem("access_token");
 
 const instance = axios.create({
   baseURL: MAINURL,

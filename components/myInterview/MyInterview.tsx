@@ -31,8 +31,6 @@ const MyInterview = () => {
     }
   };
 
-  console.log(myInterviewReview?.data.length);
-
   return (
     <Container>
       <ProfileBox />

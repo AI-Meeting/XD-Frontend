@@ -5,18 +5,23 @@ import { useSpeechRecognition } from "react-speech-recognition";
 import ReactTextareaAutosize from "react-textarea-autosize";
 import AnimationBox from "./animation/AnimationBox";
 import ControllBtnBar from "./controllBtn/ControllBtnBar";
+import play from "audio-play";
+import { useRecoilState } from "recoil";
+import { textInterviewAtom } from "../../lib/module/atom/interview";
+import VideoRecorder from "react-video-recorder";
 
-type Props = {};
+type Props = {
+  question: string;
+};
 
-const QuestionBox: FC<Props> = ({}) => {
+const QuestionBox: FC<Props> = ({ question }) => {
   const videoRef = useRef<any>(null);
   const { listening, transcript } = useSpeechRecognition();
+  const [textInterview, setTextInterview] = useRecoilState(textInterviewAtom);
 
   useEffect(() => {
-    const test = async () => {
-      let text = `<speak> 그는 그렇게 말했습니다. 
-    <voice name="MAN_DIALOG_BRIGHT">잘 지냈어? 나도 잘 지냈어.</voice> 
-    <voice name="WOMAN_DIALOG_BRIGHT" speechStyle="SS_ALT_FAST_1">금요일이 좋아요.</voice> </speak>`;
+    const audioPlay = async () => {
+      let text = `<speak>${question}</speak>`;
 
       try {
         const { data } = await axios.post(
@@ -30,27 +35,69 @@ const QuestionBox: FC<Props> = ({}) => {
             responseType: "arraybuffer",
           }
         );
+        // 1. AudioContext 생성
+        const audioContext = new window.AudioContext();
+
+        audioContext.decodeAudioData(data).then((res) => {
+          let audio = play(res, {
+            end: res.duration,
+            autoplay: true,
+            volume: 1,
+          });
+
+          audio.play();
+
+          let playback = play(res);
+          playback.pause();
+          playback.play();
+        });
       } catch (e) {
         console.log(e);
       }
     };
 
-    test();
-  }, []);
+    audioPlay();
+  }, [question]);
 
   return (
     <QuestionContainer>
-      <QuestionText>
-        대마고에 지원한 동기가 어떻게 되신가요? 그리고 앞으로의 꿈은 어떤 것
-        인가요?
-      </QuestionText>
+      <QuestionText>{question}</QuestionText>
       <AnimationBox />
       <ReactTextareaAutosize
         minRows={5}
         value={transcript}
         placeholder="질문에 대해 음성으로 답변해주시면 XD가 인식하여 변환합니다."
+        onChange={(e) =>
+          setTextInterview({ ...textInterview, answer: e.target.value })
+        }
       />
       <VideoItem ref={videoRef} />
+      <VideoRecorder
+        isFlipped={false}
+        countdownTime={0}
+        mimeType="video/webm;codecs=vp8,opus"
+        constraints={{
+          //  audio: true,
+          video: {
+            width: { exact: 480, ideal: 480 },
+            height: { exact: 640, ideal: 640 },
+            aspectRatio: { exact: 0.7500000001, ideal: 0.7500000001 },
+            resizeMode: "crop-and-scale",
+          },
+        }}
+        onRecordingComplete={(videoBlob) => {
+          const audiofile = new File([videoBlob], "video");
+
+          console.log(videoBlob, audiofile);
+
+          setTextInterview({
+            ...textInterview,
+            videoUrl: audiofile,
+            voiceUrl: audiofile,
+          });
+        }}
+      />
+
       <ControllBtnBar listening={listening} videoRef={videoRef} />
     </QuestionContainer>
   );

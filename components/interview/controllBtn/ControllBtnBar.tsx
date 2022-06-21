@@ -35,44 +35,54 @@ const ControllBtnBar: FC<Props> = ({ listening, videoRef }) => {
   };
 
   useEffect(() => {
+    let mediaData = [];
+    let recordedVideoURL = null;
+    let mediaRecorder = null;
+    let videoBlob = null;
+
     const videoOnOff = () => {
       navigator.mediaDevices.getUserMedia(constraints).then((mediaStream) => {
-        // 비디오 트랙을 포함한 MediaStream
+        // 카메라 켜기
         videoRef.current.srcObject = mediaStream;
 
         videoRef.current.onloadedmetadata = () => {
           videoRef.current.play();
-
-          // HTMLVideoElement로 카메라의 화면을 출력하기 시작
         };
 
         if (!videoControll) {
           mediaStream.getTracks().forEach((track) => track.stop());
         }
 
-        //////////////////////////////////////
-        let mediaData = [];
+        // // 카메라 녹화
+        // mediaRecorder = new MediaRecorder(mediaStream, {
+        //   mimeType: "video/webm; codecs=vp9",
+        // });
 
-        let mediaRecorder = new MediaRecorder(mediaStream, {
-          mimeType: "video/webm; codecs=vp9",
-        });
+        // console.log(mediaRecorder);
 
-        mediaRecorder.ondataavailable = (event) => {
-          if (event.data && event.data.size > 0) {
-            mediaData.push(event.data);
-          }
-        };
+        // mediaRecorder.ondataavailable = (event) => {
+        //   if (event.data && event.data.size > 0) {
+        //     mediaData.push(event.data);
+        //   }
+        // };
 
-        mediaRecorder.onstop = function () {
-          const blob = new Blob(mediaData, { type: "video/webm" });
-          let recordedMediaUrl = window.URL.createObjectURL(blob);
-
-          console.log(recordedMediaUrl);
-        };
+        // mediaRecorder.onstop = () => {
+        //   videoBlob = new Blob(mediaData, { type: "video/webm" });
+        //   recordedVideoURL = window.URL.createObjectURL(videoBlob);
+        //   console.log("video capture end", recordedVideoURL);
+        // };
 
         // 4. 녹화 시작
         //  mediaRecorder.start();
       });
+    };
+
+    const VideoCaptureEnd = () => {
+      if (mediaRecorder) {
+        // 5) 녹화 중지
+        mediaRecorder.stop();
+        mediaRecorder = null;
+      }
     };
 
     videoOnOff();

@@ -31,7 +31,7 @@ const InterviewItem: FC<Props> = ({ data }) => {
           levelFontSize={16}
           barHeight={5}
         />
-        <InterviewStateBtn type="진행중" interviewId={data.id} />
+        <InterviewStateBtn type="모의 면접 보러가기" interviewId={data.id} />
       </LevelInfo>
     </ItemBox>
   );

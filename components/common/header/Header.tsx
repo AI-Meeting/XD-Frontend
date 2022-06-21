@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import ArrowIcon from "../Icon/ArrowIcon";
 import { blueColor, redColor } from "../../../styles/color";
 import Link from "next/link";
+import { useUserInfo } from "../../../queries/Company";
 
 const menuData = [
   { id: "menu0", name: "면접 후기 등록", path: "/write/review" },
@@ -15,6 +16,8 @@ const Header = () => {
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [token, setToken] = useState<string>("");
+
+  const { data: user } = useUserInfo();
 
   const routerClickHandle = (path: string) => {
     router.push(`${path}`);
@@ -61,7 +64,7 @@ const Header = () => {
         <ProfileContainer>
           <div className="profile_box" onClick={openMenuHandle}>
             <div className="profile_circle" />
-            <span>sliverbeen</span>
+            <span>{user?.data?.name}</span>
             <ArrowIcon openMenu={openMenu} />
           </div>
           <MoreMenuBox onClick={openMenuHandle} openMenu={openMenu}>
@@ -92,6 +95,8 @@ const Header = () => {
 };
 
 const HeaderContainer = styled.header`
+  z-index: 10;
+  position: fixed;
   width: 100%;
   height: 60px;
   margin: 0 auto;

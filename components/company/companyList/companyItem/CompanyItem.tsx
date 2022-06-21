@@ -50,10 +50,6 @@ const Container = styled.div`
   &:hover {
     box-shadow: 0px 2px 8px rgba(126, 126, 126, 0.25);
   }
-
-  &:first-child {
-    margin-top: 0;
-  }
 `;
 
 const Title = styled.p`

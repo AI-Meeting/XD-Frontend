@@ -8,6 +8,7 @@ export interface CompanyType {
   field: string;
   description: string;
   question: QuetionType[];
+  company_logo: string;
 }
 
 export interface QuetionType {
@@ -35,6 +36,8 @@ export interface CompanyListType {
   location: string;
   name: string;
   questionCnt: number;
+  //TODO 추가
+  companyId: number;
 }
 
 export interface CompanyListMapType {

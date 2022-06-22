@@ -85,6 +85,8 @@ const ReviewContainer = styled.div`
   margin: 30px 0;
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: column-reverse;
 `;
 
 export default MyInterview;

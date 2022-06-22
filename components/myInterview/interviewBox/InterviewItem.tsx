@@ -41,7 +41,7 @@ const ItemBox = styled.div`
   margin: 20px 0;
   padding: 20px;
   width: 100%;
-  height: 200px;
+  //  height: 200px;
   border: 1px solid #e3e4e35e;
   box-sizing: border-box;
 

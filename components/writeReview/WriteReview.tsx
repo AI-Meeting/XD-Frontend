@@ -85,13 +85,12 @@ const Container = styled.div`
   height: auto;
   max-height: calc(100vh - 120px);
   margin-top: 30px;
-  padding: 0px 80px;
+  padding: 50px 80px;
   background-color: #ffffff;
   border-radius: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 `;
 
 const Title = styled.h1`

@@ -8,7 +8,6 @@ import {
 } from "../../../../../styles/color";
 import AnswerItem from "../answer/Answer";
 import NoAnswerText from "../answer/NoAnswerText";
-import ReactPlayer from "react-player/lazy";
 
 type Props = {
   question: QuetionType;
@@ -16,37 +15,27 @@ type Props = {
 
 const Question: FC<Props> = ({ question }) => {
   return (
-    <QuestionWrap>
-      <span>
-        <strong>Q. </strong>
-        {question.question}
-      </span>
-      {question.questionAnswers.length === 0 ? (
-        <NoAnswerText />
-      ) : (
-        <>
-          {question?.questionAnswers?.map((answer) => {
-            console.log(answer.videoUrl.split("?")[0]);
-
-            return (
-              <>
-                <ReactPlayer
-                  url={`${answer.videoUrl.split("?")[0]}`} // 플레이어 url
-                  width="1000px" // 플레이어 크기 (가로)
-                  height="700px" // 플레이어 크기 (세로)
-                  playing={true} // 자동 재생 on
-                  muted={true} // 자동 재생 on
-                  controls={true} // 플레이어 컨트롤 노출 여부
-                  light={false} // 플레이어 모드
-                  pip={true} // pip 모드 설
-                />
-                <AnswerItem key={answer.id} answer={answer} />
-              </>
-            );
-          })}
-        </>
-      )}
-    </QuestionWrap>
+    <>
+      <QuestionWrap>
+        <span>
+          <strong>Q. </strong>
+          {question.question}
+        </span>
+        {question.questionAnswers.length === 0 ? (
+          <NoAnswerText />
+        ) : (
+          <>
+            {question?.questionAnswers?.map((answer) => {
+              return (
+                <>
+                  <AnswerItem key={answer.id} answer={answer} />
+                </>
+              );
+            })}
+          </>
+        )}
+      </QuestionWrap>
+    </>
   );
 };
 const QuestionWrap = styled.div`

@@ -15,7 +15,11 @@ export default {
       url: `/company/${companyId}`,
     });
   },
-  postQuestionAnswer(answer: QuestionAnwerType, questionId: number) {
+  postQuestionAnswer(
+    answer: QuestionAnwerType,
+    questionId: number,
+    companyId: number
+  ) {
     const formData: any = new FormData();
     const uri = answer.videoUrl;
 
@@ -31,14 +35,14 @@ export default {
     try {
       return axios({
         method: "post",
-        url: `http://localhost:3000/question/answer?questionId=${questionId}`,
+        url: `http://3.39.18.1:3000/question/answer?questionId=${questionId}&companyId=${companyId}`,
         headers: {
           // Accept: "*/*",
           // type: "formData",
-          "Content-Type": "multipart/form-data",
+          //  "Content-Type": "multipart/form-data",
           Authorization: "Bearer " + localStorage.getItem("access-token"),
         },
-        data: formData,
+        data: { answer: answer.answer },
       });
     } catch (e) {
       console.log(e);
@@ -50,11 +54,13 @@ export default {
       url: `/question/answer/${answerId}`,
     });
   },
-  patchQuestionAnswer(answer: QuestionAnwerType, answerId: number) {
+  patchQuestionAnswer(answer: any, answerId: number) {
+    console.log(answer);
+
     return request({
       method: "patch",
       url: `/question/answer?&answerId=${answerId}`,
-      data: answer,
+      data: { answer: answer },
     });
   },
 };

@@ -2,6 +2,7 @@ import {
   CompanyListMapType,
   CompanyListType,
 } from "../../../@types/CompanyType";
+import request from "../common";
 import instance from "../common";
 
 export const getCompanyList = async (companyName: string) => {
@@ -16,14 +17,8 @@ export const getCompanyListMap = async () => {
   return data.data;
 };
 
-/* eslint-disable import/no-anonymous-default-export */
-import { QuestionAnwerType } from "../../../@types/QuestionType";
-import request from "../common";
-
-export default {
-  getCompany(companyId: number) {
-    return request({
-      url: `/company/${companyId}`,
-    });
-  },
+export const getCompany = (companyId: number) => {
+  return request({
+    url: `/company/${companyId}`,
+  });
 };

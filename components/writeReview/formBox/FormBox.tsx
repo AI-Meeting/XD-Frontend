@@ -159,6 +159,7 @@ const FormBox: FC<Props> = ({ companyReviewValue, setCompanyReviewValue }) => {
 };
 
 const Container = styled.div`
+  overflow: auto;
   width: 100%;
 `;
 

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { FC } from "react";
 import { useMutation, useQueryClient } from "react-query";
+import { toast } from "react-toastify";
 import queryKeys from "../../../../../contexts/QueryKey";
 import question from "../../../../../lib/api/question";
 import { mainColor } from "../../../../../styles/color";
@@ -18,8 +19,11 @@ const AnswerDeleteBtn: FC<Props> = ({ answerId }) => {
     {
       onSuccess: () => {
         client.invalidateQueries(queryKeys.company);
+        toast.success("면접 답변이 삭제되었습니다.");
       },
-      onError: () => {},
+      onError: () => {
+        toast.error("면접 답변 삭제가 실패했습니다.");
+      },
     }
   );
   return <DeleteBtn onClick={() => deleteAnswerMutate()}>답변 삭제</DeleteBtn>;

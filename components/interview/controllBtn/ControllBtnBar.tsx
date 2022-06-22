@@ -26,9 +26,9 @@ const ControllBtnBar: FC<Props> = ({ listening, videoRef }) => {
     SpeechRecognition.stopListening();
   }, []);
 
-  const videoStart = () => {
-    let mediaRecorder = null;
-  };
+  // const videoStart = () => {
+  //   let mediaRecorder = null;
+  // };
 
   const stopInterviewHandle = () => {
     setModalOpen(true);
@@ -54,26 +54,25 @@ const ControllBtnBar: FC<Props> = ({ listening, videoRef }) => {
         }
 
         // // 카메라 녹화
-        // mediaRecorder = new MediaRecorder(mediaStream, {
-        //   mimeType: "video/webm; codecs=vp9",
-        // });
+        mediaRecorder = new MediaRecorder(mediaStream, {
+          mimeType: "video/webm; codecs=vp9",
+        });
 
-        // console.log(mediaRecorder);
+        console.log(mediaRecorder);
 
-        // mediaRecorder.ondataavailable = (event) => {
-        //   if (event.data && event.data.size > 0) {
-        //     mediaData.push(event.data);
-        //   }
-        // };
+        mediaRecorder.ondataavailable = (event) => {
+          if (event.data && event.data.size > 0) {
+            mediaData.push(event.data);
+          }
+        };
 
-        // mediaRecorder.onstop = () => {
-        //   videoBlob = new Blob(mediaData, { type: "video/webm" });
-        //   recordedVideoURL = window.URL.createObjectURL(videoBlob);
-        //   console.log("video capture end", recordedVideoURL);
-        // };
+        mediaRecorder.onstop = () => {
+          videoBlob = new Blob(mediaData, { type: "video/webm" });
+          recordedVideoURL = window.URL.createObjectURL(videoBlob);
+          console.log("video capture end", recordedVideoURL);
+        };
 
-        // 4. 녹화 시작
-        //  mediaRecorder.start();
+        //mediaRecorder.start();
       });
     };
 

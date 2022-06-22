@@ -1,8 +1,17 @@
 import styled from "@emotion/styled";
-import { FC } from "react";
+import { FC, useState } from "react";
 import ReactTextareaAutosize from "react-textarea-autosize";
+import { useSetRecoilState } from "recoil";
 import { QuestionAnswerType } from "../../../../../@types/CompanyType";
-import { blueColor, darkGrayTextColor } from "../../../../../styles/color";
+import {
+  videoAtom,
+  videoModalAtom,
+} from "../../../../../lib/module/atom/interview";
+import {
+  blueColor,
+  darkGrayTextColor,
+  mainColor,
+} from "../../../../../styles/color";
 import AnswerDeleteBtn from "./AnswerDeleteBtn";
 import AnswerPatchBtn from "./AnswerPatchBtn";
 
@@ -11,6 +20,10 @@ type Props = {
 };
 
 const AnswerItem: FC<Props> = ({ answer }) => {
+  const [changeAanswer, setChangeAanswer] = useState<string>(answer.answer);
+  const setModalOpen = useSetRecoilState(videoModalAtom);
+  const setVideoUrl = useSetRecoilState(videoAtom);
+
   return (
     <AnswerWrap>
       <p>나의 답변</p>
@@ -19,10 +32,26 @@ const AnswerItem: FC<Props> = ({ answer }) => {
         minRows={3}
         name="box_content"
         defaultValue={answer.answer}
+        onChange={(e) => setChangeAanswer(e.target.value)}
       />
+
       <BtnWrap>
-        <AnswerDeleteBtn answerId={answer.id} />
-        <AnswerPatchBtn />
+        <div>
+          {answer.videoUrl && (
+            <ButtonVideo
+              onClick={() => {
+                setModalOpen(true);
+                setVideoUrl(answer.videoUrl);
+              }}
+            >
+              면접 돌려보기
+            </ButtonVideo>
+          )}
+        </div>
+        <div>
+          <AnswerDeleteBtn answerId={answer.id} />
+          <AnswerPatchBtn answerId={answer.id} changeAanswer={changeAanswer} />
+        </div>
       </BtnWrap>
     </AnswerWrap>
   );
@@ -57,8 +86,22 @@ const BtnWrap = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: space-between;
   gap: 15px;
+`;
+
+const ButtonVideo = styled.button`
+  padding: 0 20px;
+  cursor: pointer;
+  height: 35px;
+  background: ${mainColor};
+  color: white;
+  border-radius: 30px;
+  transition: all 0.2s ease-in-out;
+
+  :hover {
+    box-shadow: 0px 4px 8px rgba(180, 180, 180, 0.25);
+  }
 `;
 
 export default AnswerItem;

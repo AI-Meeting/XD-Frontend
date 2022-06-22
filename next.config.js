@@ -7,7 +7,11 @@ const nextConfig = {
       issuer: /\.[jt]sx?$/,
       use: ["@svgr/webpack"],
       //    bodyParser: false,
+      images: {
+        domains: ["localhost", "*"],
+      },
     });
+
     return config;
   },
 };

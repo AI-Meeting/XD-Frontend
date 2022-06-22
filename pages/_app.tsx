@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_CLIENT_ID}`}
       ></Script>
       <RecoilRoot>
-        <ToastContainer position="top-right" />
+        <ToastContainer position="top-right" autoClose={1000} />
         <GlobalStyle />
         <Component {...pageProps} />
       </RecoilRoot>

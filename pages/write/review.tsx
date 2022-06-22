@@ -22,6 +22,7 @@ const Container = styled.div`
   background-color: ${grayBackgroundColor};
   display: flex;
   justify-content: center;
+  margin-top: 60px;
 `;
 
 export default WriteCompanyReviewPage;

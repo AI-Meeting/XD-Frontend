@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Image
-        src="/assets/icon/logo.svg"
+        src="/assets/icon/logo.png"
         width={30}
         height={30}
         alt="로고"
@@ -62,7 +62,7 @@ const Header = () => {
           </li>
         ))}
 
-        {token ? (
+        {user ? (
           <ProfileContainer>
             <div className="profile_box" onClick={openMenuHandle}>
               <div className="profile_circle" />

@@ -10,6 +10,7 @@ export type DefaultInputType = {
   onChangeFunction: (e: React.ChangeEvent<HTMLInputElement>) => void;
   margin: string;
   placeHolder?: string;
+  type?: string;
 };
 
 const DefaultInput: FC<DefaultInputType> = ({
@@ -21,6 +22,7 @@ const DefaultInput: FC<DefaultInputType> = ({
   onChangeFunction,
   margin,
   placeHolder,
+  type,
 }) => {
   return (
     <InputContainer width={width} margin={margin}>
@@ -30,6 +32,7 @@ const DefaultInput: FC<DefaultInputType> = ({
         fontSize={inputFontSize}
         value={value}
         onChange={onChangeFunction}
+        type={type ? type : "text"}
       />
     </InputContainer>
   );

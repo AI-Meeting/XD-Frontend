@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
-import axios from "axios";
 import { useRouter } from "next/router";
 import React, { FC, useEffect, useState } from "react";
-import { useMutation } from "react-query";
 import { CompanyReviewType } from "../../@types/CompanyReviewType";
 import { useWriteReviewMutate } from "../../queries/Company";
 import FormBox from "./formBox/FormBox";
@@ -43,6 +41,13 @@ const WriteReview: FC = () => {
       alert("잠시후 다시 시도해주세요.");
     }
   }, [isSuccess, isError]);
+
+  useEffect(() => {
+    if (!localStorage.getItem("access-token")) {
+      alert("로그인 후 이용해주세요.");
+      router.push("/login");
+    }
+  }, []);
 
   return (
     <>

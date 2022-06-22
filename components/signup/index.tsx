@@ -94,6 +94,7 @@ const Signup: FC = () => {
       value: signupValue.password,
       onChangeFunction: setPassword,
       margin: "0px 0px 20px 0px",
+      type: "password",
     },
     {
       width: 280,

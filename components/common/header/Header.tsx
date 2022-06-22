@@ -30,17 +30,19 @@ const Header = () => {
     openMenuHandle();
 
     localStorage.removeItem("access-token");
-    localStorage.removeItem("refresh-token");
+    setToken("");
   };
 
   useEffect(() => {
-    setToken(localStorage.getItem("access-token"));
-  }, [token]);
+    if (localStorage.getItem("access-token")) {
+      setToken(localStorage.getItem("access-token"));
+    }
+  }, []);
 
   return (
     <HeaderContainer>
       <Image
-        src="/assets/icon/logo.svg"
+        src="/assets/icon/logo.png"
         width={30}
         height={30}
         alt="로고"
@@ -60,34 +62,27 @@ const Header = () => {
           </li>
         ))}
 
-        <ProfileContainer>
-          <div className="profile_box" onClick={openMenuHandle}>
-            <div className="profile_circle" />
-            <span>{user?.data?.name}</span>
-            <ArrowIcon openMenu={openMenu} />
-          </div>
-          <MoreMenuBox onClick={openMenuHandle} openMenu={openMenu}>
-            <li
-              onClick={() => {
-                routerClickHandle("interview"), openMenuHandle;
-              }}
-            >
-              내 면접
-            </li>
-            {token ? (
-              <li onClick={logoutHandle}>로그아웃</li>
-            ) : (
+        {user ? (
+          <ProfileContainer>
+            <div className="profile_box" onClick={openMenuHandle}>
+              <div className="profile_circle" />
+              <span>{user?.data?.name}</span>
+              <ArrowIcon openMenu={openMenu} />
+            </div>
+            <MoreMenuBox onClick={openMenuHandle} openMenu={openMenu}>
               <li
                 onClick={() => {
-                  openMenuHandle();
-                  router.push("/login");
+                  routerClickHandle("interview"), openMenuHandle;
                 }}
               >
-                로그인
+                내 면접
               </li>
-            )}
-          </MoreMenuBox>
-        </ProfileContainer>
+              <li onClick={logoutHandle}>로그아웃</li>
+            </MoreMenuBox>
+          </ProfileContainer>
+        ) : (
+          <LoginText onClick={() => router.push("/login")}>로그인</LoginText>
+        )}
       </NavMenu>
     </HeaderContainer>
   );
@@ -96,6 +91,8 @@ const Header = () => {
 const HeaderContainer = styled.header`
   z-index: 10;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 60px;
   margin: 0 auto;
@@ -175,6 +172,14 @@ const MoreMenuBox = styled.div<{ openMenu: boolean }>`
     color: ${redColor};
     font-size: 14px;
   }
+`;
+
+const LoginText = styled.span`
+  font-size: 14px;
+  color: #6f828c;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 `;
 
 export default Header;

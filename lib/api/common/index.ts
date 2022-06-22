@@ -31,7 +31,7 @@ instance.interceptors.response.use(
     // if (status === 400) {
     //   window.location.href = "/";
     // } else if (status === 401) {
-    //   localStorage.removeItem("access_token");
+    //   localStorage.removeItem("access-token");
 
     //   setTimeout(() => {
     //     window.location.href = "/";

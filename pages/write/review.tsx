@@ -16,7 +16,6 @@ const WriteCompanyReviewPage: FC = () => {
 };
 
 const Container = styled.div`
-  padding-top: 60px;
   width: 100vw;
   height: calc(100vh - 60px);
   position: relative;

@@ -1,3 +1,4 @@
+import exp from "constants";
 import { atom } from "recoil";
 import { QuestionAnwerType } from "../../../@types/QuestionType";
 
@@ -13,5 +14,20 @@ export const stopModalAtom = atom<boolean>({
 
 export const textInterviewAtom = atom<QuestionAnwerType>({
   key: "textInterviewAtom",
-  default: { answer: "안녕!!", voiceUrl: null, videoUrl: null },
+  default: {
+    answer: "안녕!!",
+    voiceUrl: null,
+    videoUrl: null,
+    resetVoice: null,
+  },
+});
+
+export const videoModalAtom = atom<boolean>({
+  key: "videoModalAtom",
+  default: false,
+});
+
+export const videoAtom = atom<string>({
+  key: "videoAtom",
+  default: null,
 });

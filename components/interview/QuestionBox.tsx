@@ -1,22 +1,25 @@
 import styled from "@emotion/styled";
 import axios from "axios";
 import { FC, useEffect, useRef } from "react";
-import { useSpeechRecognition } from "react-speech-recognition";
 import ReactTextareaAutosize from "react-textarea-autosize";
 import AnimationBox from "./animation/AnimationBox";
 import ControllBtnBar from "./controllBtn/ControllBtnBar";
 import play from "audio-play";
 import { useRecoilState } from "recoil";
 import { textInterviewAtom } from "../../lib/module/atom/interview";
-import VideoRecorder from "react-video-recorder";
 
 type Props = {
   question: string;
+  listening: any;
+  transcript: any;
 };
 
-const QuestionBox: FC<Props> = ({ question }) => {
+const QuestionBox: FC<Props> = ({
+  question,
+  listening,
+  transcript,
+}) => {
   const videoRef = useRef<any>(null);
-  const { listening, transcript } = useSpeechRecognition();
   const [textInterview, setTextInterview] = useRecoilState(textInterviewAtom);
 
   useEffect(() => {
@@ -59,6 +62,13 @@ const QuestionBox: FC<Props> = ({ question }) => {
     audioPlay();
   }, [question]);
 
+  useEffect(() => {
+    setTextInterview({
+      ...textInterview,
+      answer: transcript,
+    });
+  }, [transcript]);
+
   return (
     <QuestionContainer>
       <QuestionText>{question}</QuestionText>
@@ -66,38 +76,12 @@ const QuestionBox: FC<Props> = ({ question }) => {
       <ReactTextareaAutosize
         minRows={5}
         value={transcript}
-        placeholder="질문에 대해 음성으로 답변해주시면 XD가 인식하여 변환합니다."
         onChange={(e) =>
-          setTextInterview({ ...textInterview, answer: e.target.value })
+          setTextInterview({ ...textInterview, answer: transcript })
         }
+        placeholder="질문에 대해 음성으로 답변해주시면 XD가 인식하여 변환합니다."
       />
       <VideoItem ref={videoRef} />
-      <VideoRecorder
-        isFlipped={false}
-        countdownTime={0}
-        mimeType="video/webm;codecs=vp8,opus"
-        constraints={{
-          //  audio: true,
-          video: {
-            width: { exact: 480, ideal: 480 },
-            height: { exact: 640, ideal: 640 },
-            aspectRatio: { exact: 0.7500000001, ideal: 0.7500000001 },
-            resizeMode: "crop-and-scale",
-          },
-        }}
-        onRecordingComplete={(videoBlob) => {
-          const audiofile = new File([videoBlob], "video");
-
-          console.log(videoBlob, audiofile);
-
-          setTextInterview({
-            ...textInterview,
-            videoUrl: audiofile,
-            voiceUrl: audiofile,
-          });
-        }}
-      />
-
       <ControllBtnBar listening={listening} videoRef={videoRef} />
     </QuestionContainer>
   );

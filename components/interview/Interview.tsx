@@ -6,10 +6,12 @@ import ArrowBtn from "./controllBtn/ArrowBtn";
 import { backgroundAnimation } from "./animation/animation";
 import QuestionBox from "./QuestionBox";
 import { useCompany } from "../../queries/Question";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { textInterviewAtom } from "../../lib/module/atom/interview";
 import { useMutation } from "react-query";
 import question from "../../lib/api/question/index";
+import { toast } from "react-toastify";
+import { useSpeechRecognition } from "react-speech-recognition";
 
 type Props = {};
 
@@ -19,6 +21,7 @@ const QuestionContent: FC<Props> = () => {
   const questionId: number = parseInt(router.query.questionId as string);
   const [content, setContent] = useState<string>("");
   const [textInterview, setTextInterview] = useRecoilState(textInterviewAtom);
+  const { listening, transcript, resetTranscript } = useSpeechRecognition();
 
   const { data: companyData } = useCompany(Number(companyId));
 
@@ -35,12 +38,23 @@ const QuestionContent: FC<Props> = () => {
   };
 
   const { mutate: interviewMutation } = useMutation(
-    () => question.postQuestionAnswer(textInterview, questionId),
+    () =>
+      question.postQuestionAnswer(
+        textInterview,
+        questionId,
+        Number(router.query.id)
+      ),
     {
       onSuccess: () => {
-        alert("인터뷰가 저장되었습니다.");
+        toast.success("인터뷰가 저장되었습니다.");
+        setTextInterview(null);
+        resetTranscript();
       },
-      onError: () => {},
+      onError: () => {
+        toast.error("인터뷰가 저장에 실패했습니다.");
+        setTextInterview(null);
+        resetTranscript();
+      },
     }
   );
 
@@ -56,7 +70,11 @@ const QuestionContent: FC<Props> = () => {
     <ProcessContainer>
       <InterviewStopModal />
       <ArrowBtn driection="left" btnClickHandle={leftBtnClickHandle} />
-      <QuestionBox question={content} />
+      <QuestionBox
+        question={content}
+        listening={listening}
+        transcript={transcript}
+      />
       <ArrowBtn driection="rigth" btnClickHandle={rightBtnClickHandle} />
     </ProcessContainer>
   );

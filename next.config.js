@@ -11,8 +11,10 @@ const nextConfig = {
       use: ["@svgr/webpack"],
       //    bodyParser: false,
     });
-
     return config;
+  },
+  images: {
+    domains: ["localhost", "*"],
   },
 };
 

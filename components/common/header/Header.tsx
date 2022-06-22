@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import ArrowIcon from "../Icon/ArrowIcon";
 import { blueColor, redColor } from "../../../styles/color";
-import Link from "next/link";
 import { useUserInfo } from "../../../queries/User";
 
 const menuData = [
@@ -30,13 +29,15 @@ const Header = () => {
   const logoutHandle = () => {
     openMenuHandle();
 
-    localStorage.removeItem("access_token");
-    window.location.reload();
+    localStorage.removeItem("access-token");
+    setToken("");
   };
 
   useEffect(() => {
-    setToken(localStorage.getItem("access-token"));
-  }, [token]);
+    if (localStorage.getItem("access-token")) {
+      setToken(localStorage.getItem("access-token"));
+    }
+  }, []);
 
   return (
     <HeaderContainer>
@@ -61,7 +62,7 @@ const Header = () => {
           </li>
         ))}
 
-        {user ? (
+        {token ? (
           <ProfileContainer>
             <div className="profile_box" onClick={openMenuHandle}>
               <div className="profile_circle" />
@@ -90,6 +91,8 @@ const Header = () => {
 const HeaderContainer = styled.header`
   z-index: 10;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 60px;
   margin: 0 auto;

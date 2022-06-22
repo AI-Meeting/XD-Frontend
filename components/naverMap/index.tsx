@@ -81,6 +81,8 @@ const NaverMap: FC = () => {
             content: [
               mapMarker(company.name, company.field, company.level),
             ].join(""),
+            size: new naver.maps.Size(38, 58),
+            anchor: new naver.maps.Point(0, 0),
           },
           zIndex: 100,
         });

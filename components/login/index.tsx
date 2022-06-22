@@ -78,6 +78,7 @@ const Login: FC = () => {
       value: loginValue.password,
       onChangeFunction: setPassword,
       margin: "0px",
+      type: "password",
     },
   ];
 

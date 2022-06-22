@@ -23,6 +23,9 @@ const style = css`
   .marker-container {
     display: flex;
     flex-direction: column-reverse;
+    position: relative;
+    top: -97px;
+    left: 0;
   }
 
   .marker-icon {
